@@ -1,0 +1,13 @@
+@import "src/scss/mixins.scss";
+
+.root {
+   &__header {
+      padding-bottom: 87px;
+   }
+
+   &__list_wrapper {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 103px 0px;
+   }
+}

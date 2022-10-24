@@ -1,0 +1,43 @@
+@import "src/scss/mixins.scss";
+
+.root {
+   padding: 0px 101px;
+   height: 80px;
+   display: flex;
+   justify-content: space-between;
+
+   .selected {
+      border-bottom: 2px solid get-color(salad, base);
+   }
+
+   &__categories {
+      width: 202px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      &__button {
+         padding: 3px;
+         border-radius: 10px;
+
+         &:hover {
+            background-color: get-color(hovered, base);
+         }
+      }
+
+      &__inselected {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         height: 100%;
+         transition: all 0.2s ease-out;
+      }
+   }
+
+   &__options {
+      width: 202px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+   }
+}

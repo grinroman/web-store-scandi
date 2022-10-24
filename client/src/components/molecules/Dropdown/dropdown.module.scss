@@ -1,0 +1,62 @@
+@import "src/scss/mixins.scss";
+@import "src/scss/variables";
+
+.root {
+   display: flex;
+   position: relative;
+   justify-content: center;
+   align-items: center;
+   position: relative;
+   user-select: none;
+
+   .isactive {
+      transform: rotate(360deg);
+   }
+
+   &__currencylabel {
+      width: 20px;
+      display: flex;
+      justify-content: center;
+   }
+
+   &__dropdown_btn {
+      display: flex;
+      margin-right: 15px;
+      padding: 3px 5px;
+      box-sizing: border-box;
+      &:hover {
+         background-color: get-color(hovered, base);
+         border-radius: 10px;
+      }
+
+      &__arrow {
+         margin-left: 10px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         height: 29px;
+         transform: rotate(180deg);
+         transition: all $am-transition-time ease;
+      }
+   }
+
+   &__dropdown_content {
+      position: absolute;
+      box-shadow: 0px 0px 10px get-color(hovered, base);
+      width: 114px;
+      //  display: flex;
+      //  flex-direction: column;
+      top: 110%;
+      left: 0px;
+   }
+
+   &__dropdown_item {
+      padding: 8px 0px 8px 20px;
+      cursor: pointer;
+      transition: all $am-transition-time ease;
+
+      &:hover {
+         background-color: get-color(hovered, base);
+      }
+   }
+}

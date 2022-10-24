@@ -1,0 +1,9 @@
+@import "src/scss/mixins.scss";
+
+.root {
+   padding: 3px 6px 2px 4px;
+   &:hover {
+      background-color: get-color(hovered, base);
+      border-radius: 5px;
+   }
+}

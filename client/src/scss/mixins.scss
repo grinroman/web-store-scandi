@@ -1,0 +1,21 @@
+@import "variables";
+
+@function get-color($name, $state) {
+   $color: map-get($am-colors, $name);
+
+   @if $color != null {
+      @return map-get($color, $state);
+   }
+
+   @return null;
+}
+
+@function get-background($name, $state) {
+   $color: map-get($am-backgrounds, $name);
+
+   @if $color != null {
+      @return map-get($color, $state);
+   }
+
+   @return null;
+}

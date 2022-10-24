@@ -1,0 +1,14 @@
+@import "src/scss/mixins.scss";
+
+.root {
+   padding: 15px;
+   background-color: get-color(salad, base);
+   border-radius: 50%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
+   &:hover {
+      opacity: 0.9;
+   }
+}

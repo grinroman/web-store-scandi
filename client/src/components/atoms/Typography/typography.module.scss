@@ -1,0 +1,62 @@
+@import "src/scss/mixins.scss";
+
+.root {
+   font-family: $am-font-family;
+
+   &.header1 {
+      font-weight: 400;
+      font-size: 42px;
+      line-height: 160%;
+      text-transform: capitalize;
+   }
+
+   &.headertextselected {
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 120%;
+      text-transform: uppercase;
+   }
+
+   &.headertextblank {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 120%;
+      text-transform: uppercase;
+   }
+
+   &.currency {
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 160%;
+   }
+   &.cardtitle {
+      font-weight: 300;
+      font-size: 18px;
+      line-height: 160%;
+   }
+   &.outofstock {
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 160%;
+      text-transform: uppercase;
+   }
+
+   &.left {
+      text-align: left;
+   }
+
+   &.center {
+      text-align: center;
+   }
+
+   &.right {
+      text-align: right;
+   }
+
+   @each $color, $_ in $am-colors {
+      &.#{$color} {
+         //ч/з пробел добавляем
+         color: get-color($color, base);
+      }
+   }
+}

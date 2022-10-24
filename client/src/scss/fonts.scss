@@ -1,0 +1,63 @@
+$am-font-family: "Raleway";
+
+@font-face {
+   font-family: $am-font-family;
+   src: url("../../public/fonts/Raleway-Regular.woff") format("woff"),
+      url("../../public/fonts/Raleway-Regular.eot") format("eot"),
+      url("../../public/fonts/Raleway-Regular.ttf") format("ttf");
+   font-style: normal;
+   font-weight: normal;
+   font-display: swap;
+}
+
+@font-face {
+   font-family: $am-font-family;
+   src: url("../../public/fonts/Raleway-Medium.woff") format("woff"),
+      url("../../public/fonts/Raleway-Medium.eot") format("eot"),
+      url("../../public/fonts/Raleway-Medium.ttf") format("ttf");
+   font-style: normal;
+   font-weight: 500;
+   font-display: swap;
+}
+
+@font-face {
+   font-family: $am-font-family;
+   src: url("../../public/fonts/Raleway-Bold.woff") format("woff"),
+      url("../../public/fonts/Raleway-Bold.eot") format("eot"),
+      url("../../public/fonts/Raleway-Bold.ttf") format("ttf");
+   font-style: normal;
+   font-weight: 600;
+   font-display: swap;
+}
+
+@font-face {
+   font-family: $am-font-family;
+   src: url("../../public/fonts/Raleway-ExtraBold.woff") format("woff"),
+      url("../../public/fonts/Raleway-ExtraBold.eot") format("eot"),
+      url("../../public/fonts/Raleway-ExtraBold.ttf") format("ttf");
+   font-style: normal;
+   font-weight: 700;
+   font-display: swap;
+}
+
+@font-face {
+   font-family: $am-font-family;
+   src: url("../../public/fonts/Raleway-Light.woff") format("woff"),
+      url("../../public/fonts/Raleway-Light.eot") format("eot"),
+      url("../../public/fonts/Raleway-Light.ttf") format("ttf");
+   font-style: normal;
+   font-weight: 800;
+   font-display: swap;
+}
+
+@font-face {
+   font-family: $am-font-family;
+   src: url("../../public/fonts/Raleway-Heavy.woff") format("woff"),
+      url("../../public/fonts/Raleway-Heavy.eot") format("eot"),
+      url("../../public/fonts/Raleway-Heavy.ttf") format("ttf");
+   font-style: normal;
+   font-weight: 900;
+   font-display: swap;
+}
+
+//fonts: black, extrabold, bold, medium, regular

@@ -1,0 +1,8 @@
+@import "src/scss/mixins.scss";
+
+.root {
+   display: flex;
+   transform: scale(10);
+   justify-content: center;
+   align-items: center;
+}
