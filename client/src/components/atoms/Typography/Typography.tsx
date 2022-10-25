@@ -11,7 +11,10 @@ type TypographyProps = {
       | 'headertextblank'
       | 'currency'
       | 'cardtitle'
-      | 'outofstock';
+      | 'outofstock'
+      | 'brand'
+      | 'productname'
+      | 'sizegrid';
    color?: Color;
    style?: CSSProperties;
    align?: 'left' | 'center' | 'right';

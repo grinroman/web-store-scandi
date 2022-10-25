@@ -1,0 +1,41 @@
+@import "src/scss/mixins.scss";
+
+.root {
+   display: flex;
+   justify-content: space-around;
+   width: 100%;
+   height: calc(100vh - 160px);
+
+   &__image_wrapper {
+      width: 60%;
+      display: flex;
+      justify-content: space-between;
+
+      & li {
+         cursor: pointer;
+         &:hover {
+            opacity: 0.9;
+         }
+      }
+
+      & img {
+         width: 75%;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         object-fit: scale-down;
+      }
+   }
+
+   &__imagelist {
+      width: 9%;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+   }
+
+   &__information_wrapper {
+      width: 40%;
+      border: 1px solid #000;
+   }
+}

@@ -1,0 +1,81 @@
+{
+   "data": {
+      "product": {
+         "id": "jacket-canada-goosee",
+         "name": "Jacket",
+         "gallery": [
+            "https://images.canadagoose.com/image/upload/w_480,c_scale,f_auto,q_auto:best/v1576016105/product-image/2409L_61.jpg",
+            "https://images.canadagoose.com/image/upload/w_480,c_scale,f_auto,q_auto:best/v1576016107/product-image/2409L_61_a.jpg",
+            "https://images.canadagoose.com/image/upload/w_480,c_scale,f_auto,q_auto:best/v1576016108/product-image/2409L_61_b.jpg",
+            "https://images.canadagoose.com/image/upload/w_480,c_scale,f_auto,q_auto:best/v1576016109/product-image/2409L_61_c.jpg",
+            "https://images.canadagoose.com/image/upload/w_480,c_scale,f_auto,q_auto:best/v1576016110/product-image/2409L_61_d.jpg",
+            "https://images.canadagoose.com/image/upload/w_1333,c_scale,f_auto,q_auto:best/v1634058169/product-image/2409L_61_o.png",
+            "https://images.canadagoose.com/image/upload/w_1333,c_scale,f_auto,q_auto:best/v1634058159/product-image/2409L_61_p.png"
+         ],
+         "description": "<p>Awesome winter jacket</p>",
+         "category": "clothes",
+         "attributes": [
+            {
+               "id": "Size",
+               "name": "Size",
+               "type": "text",
+               "items": [
+                  {
+                     "displayValue": "Small",
+                     "value": "S",
+                     "id": "Small"
+                  },
+                  {
+                     "displayValue": "Medium",
+                     "value": "M",
+                     "id": "Medium"
+                  },
+                  {
+                     "displayValue": "Large",
+                     "value": "L",
+                     "id": "Large"
+                  },
+                  {
+                     "displayValue": "Extra Large",
+                     "value": "XL",
+                     "id": "Extra Large"
+                  }
+               ]
+            }
+         ],
+         "prices": [
+            {
+               "currency": {
+                  "symbol": "$"
+               },
+               "amount": 518.47
+            },
+            {
+               "currency": {
+                  "symbol": "£"
+               },
+               "amount": 372.67
+            },
+            {
+               "currency": {
+                  "symbol": "A$"
+               },
+               "amount": 668.83
+            },
+            {
+               "currency": {
+                  "symbol": "¥"
+               },
+               "amount": 55990.46
+            },
+            {
+               "currency": {
+                  "symbol": "₽"
+               },
+               "amount": 39207.96
+            }
+         ],
+         "brand": "Canada Goose"
+      }
+   }
+}

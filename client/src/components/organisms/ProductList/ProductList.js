@@ -4,8 +4,6 @@ import CardProduct from '../../molecules/CardProduct/CardProduct';
 import styles from './productlist.module.scss';
 
 class ProductList extends React.Component {
-   state = { products: [] };
-
    render() {
       const { selectedCategory, productsArray, currentCurrency } = this.props;
       return (

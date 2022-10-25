@@ -2,13 +2,16 @@
 @import "src/scss/mixins";
 
 .root {
-   padding-top: 80px;
+   padding-top: 65px;
 
    &.outer {
-      margin: 0 100px;
+      margin: 0 auto;
       $width: map-get($am-containers, desktop);
       width: $width;
       min-width: $width;
       max-width: $width;
+      display: flex;
+      align-items: center;
+      justify-content: center;
    }
 }

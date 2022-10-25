@@ -35,4 +35,33 @@ const getListProducts = gql`
    }
 `;
 
-export { getCategoriesTitles, getListProducts };
+const getSingleProduct = gql`
+   query ($id: String!) {
+      product(id: $id) {
+         id
+         name
+         gallery
+         description
+         category
+         attributes {
+            id
+            name
+            type
+            items {
+               displayValue
+               value
+               id
+            }
+         }
+         prices {
+            currency {
+               symbol
+            }
+            amount
+         }
+         brand
+      }
+   }
+`;
+
+export { getCategoriesTitles, getListProducts, getSingleProduct };

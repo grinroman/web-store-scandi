@@ -1,8 +1,10 @@
 @import "src/scss/mixins.scss";
 
 .root {
+   padding-bottom: 145px;
+
    &__header {
-      padding-bottom: 87px;
+      padding-bottom: 65px;
    }
 
    &__list_wrapper {

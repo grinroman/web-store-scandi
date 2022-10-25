@@ -1,6 +1,7 @@
 @import "src/scss/mixins.scss";
 
 .root {
+   height: calc(100vh - 80px);
    display: flex;
    transform: scale(10);
    justify-content: center;
