@@ -52,11 +52,26 @@
       line-height: 160%;
       text-transform: uppercase;
    }
-   &.sizegrid {
+
+   &.optionsgridtitle {
       font-weight: 700;
       font-size: 18px;
       line-height: 18px;
       text-transform: uppercase;
+   }
+
+   &.amountplug {
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 18px;
+   }
+
+   &.description {
+      font-family: "Roboto";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 159.96%;
    }
 
    &.left {

@@ -1,0 +1,34 @@
+@import "src/scss/mixins.scss";
+.root {
+   margin-bottom: 24px;
+   & p {
+      margin-bottom: 6px;
+   }
+
+   &__sizes_wrapper {
+      display: flex;
+
+      &__item {
+         width: 63px;
+         height: 45px;
+         border: 1px solid get-color(paragraph, base);
+         align-items: center;
+         justify-content: center;
+         margin-right: 12px;
+         display: flex;
+         cursor: pointer;
+
+         &:hover {
+            background-color: get-color(hovered, base);
+         }
+      }
+   }
+
+   .selected {
+      background-color: #000;
+
+      &:hover {
+         opacity: 0.9;
+      }
+   }
+}

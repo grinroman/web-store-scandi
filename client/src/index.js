@@ -6,9 +6,32 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
 import './scss/index.scss';
+
+// const cache = new InMemoryCache({
+//    typePolicies: {
+//       Product: {
+//          // In an inventory management system, products might be identified
+//          // by their UPC.
+//          keyFields: ['id'],
+//       },
+//    },
+// });
+
+const defaultOptions = {
+   watchQuery: {
+      fetchPolicy: 'no-cache',
+      errorPolicy: 'ignore',
+   },
+   query: {
+      fetchPolicy: 'no-cache',
+      errorPolicy: 'all',
+   },
+};
+
 const client = new ApolloClient({
    uri: `http://localhost:4000/`,
    cache: new InMemoryCache(),
+   defaultOptions,
 });
 
 const store = createStore(

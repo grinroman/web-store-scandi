@@ -1,0 +1,31 @@
+@import "src/scss/mixins.scss";
+@import "src/scss/variables";
+
+.root {
+   padding-bottom: 38px;
+
+   .outline {
+      outline: 1.75px solid get-color(salad, base);
+      outline-offset: 1.5px;
+   }
+
+   & p {
+      margin-bottom: 6px;
+   }
+
+   &__colorgrid {
+      display: flex;
+
+      &__item {
+         width: 32px;
+         height: 32px;
+         background-color: get-color(hovered, base);
+         margin-right: 10px;
+
+         &:hover {
+            opacity: 0.7;
+            cursor: pointer;
+         }
+      }
+   }
+}

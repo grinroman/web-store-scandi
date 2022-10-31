@@ -14,7 +14,9 @@ type TypographyProps = {
       | 'outofstock'
       | 'brand'
       | 'productname'
-      | 'sizegrid';
+      | 'optionsgridtitle'
+      | 'amountplug'
+      | 'description';
    color?: Color;
    style?: CSSProperties;
    align?: 'left' | 'center' | 'right';

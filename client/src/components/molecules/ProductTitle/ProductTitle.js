@@ -7,7 +7,7 @@ class ProductTitle extends Component {
       const { brand, name } = this.props;
 
       return (
-         <div>
+         <div className={styles.root}>
             <Typography preset="brand" className={styles.root__brand}>
                {brand}
             </Typography>

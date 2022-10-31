@@ -1,4 +1,9 @@
-const initialState = { currentCurrency: '$', redurectToPLP: true };
+const initialState = {
+   currentCurrency: '$',
+   redurectToPLP: true,
+   redirectToCardPage: false,
+   cardTotal: 0,
+};
 
 const reducer = (state = initialState, action) => {
    switch (action.type) {

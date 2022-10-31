@@ -31,7 +31,7 @@ class CardProduct extends Component {
          e.target.tagName.toLowerCase() === 'div' ||
          e.target.tagName.toLowerCase() === 'svg'
       ) {
-         console.log('add to card!', productId); //TODO: add to card product logic
+         // console.log('add to card!', productId); //TODO: add to card product logic
       } else {
          this.props.callRedirectToPLP(false);
          this.setState({ redirectToProductPage: true });
@@ -39,7 +39,7 @@ class CardProduct extends Component {
    };
 
    render() {
-      const { product, currentCurrency, redurectToPLP } = this.props;
+      const { product, currentCurrency } = this.props;
       const { redirectToProductPage } = this.state;
 
       const amount = product.prices.filter(

@@ -3,7 +3,7 @@ import BigSpinner from '../atoms/BigSpinner/BigSpinner';
 import ProductList from '../organisms/ProductList/ProductList';
 import Container from '../templates/Container/Container';
 import { graphql } from '@apollo/client/react/hoc';
-import { getListProducts } from '../../graphql/queries.js';
+import { getListProducts, getSingleProduct } from '../../graphql/queries.js';
 
 class ProductListingPage extends React.Component {
    render() {
