@@ -9,8 +9,17 @@
    &__overlay_wrapper {
       position: relative;
       width: 325px;
-      height: 677px;
+      height: 642px;
       left: 69%;
+      top: 80px;
       background-color: get-color(textdarkmode, base);
+      padding: 32px 16px;
+   }
+
+   &__header {
+      padding-bottom: 32px;
+      & p {
+         display: inline-block;
+      }
    }
 }

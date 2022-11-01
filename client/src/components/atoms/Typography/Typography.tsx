@@ -16,7 +16,12 @@ type TypographyProps = {
       | 'productname'
       | 'optionsgridtitle'
       | 'amountplug'
-      | 'description';
+      | 'description'
+      | 'overlaytitle'
+      | 'calculator'
+      | 'overlayproduct'
+      | 'currencyoverlay'
+      | 'categoryoverlay';
    color?: Color;
    style?: CSSProperties;
    align?: 'left' | 'center' | 'right';

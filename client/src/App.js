@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import CardOverlay from './components/molecules/CardOverlay/CardOverlay';
 
 class App extends React.Component {
-   state = { selectedCategory: 'all', modalIsActive: true };
+   state = { selectedCategory: 'all', modalIsActive: false };
 
    setSelectedCategory = (name) => {
       this.setState({ selectedCategory: name });

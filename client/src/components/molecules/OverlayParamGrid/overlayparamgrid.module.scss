@@ -1,0 +1,20 @@
+@import "src/scss/mixins.scss";
+
+.root {
+   &__params_wrapper {
+      display: flex;
+      justify-content: flex-start;
+      margin-bottom: 6px;
+
+      &__item {
+         margin-right: 8px;
+         min-width: 20px;
+         padding: 1px 2px;
+         height: 20px;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         border: 1px solid get-color(paragraph, base);
+      }
+   }
+}

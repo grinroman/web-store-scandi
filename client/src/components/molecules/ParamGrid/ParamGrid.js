@@ -19,7 +19,7 @@ export default class ParamGrid extends PureComponent {
       } = this.props;
       return (
          <li className={styles.root}>
-            <Typography preset="optionsgridtitle">{sizegrid.id}</Typography>
+            <Typography preset="overlaytitle">{sizegrid.id}</Typography>
             <ul className={styles.root__sizes_wrapper}>
                {sizegrid.items.map((el) => (
                   <li

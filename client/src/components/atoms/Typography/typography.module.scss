@@ -41,9 +41,21 @@
       font-size: 18px;
       line-height: 160%;
    }
+
+   &.currencyoverlay {
+      font-weight: 500;
+      font-size: 15px;
+      line-height: 160%;
+   }
+
    &.cardtitle {
       font-weight: 300;
       font-size: 18px;
+      line-height: 160%;
+   }
+   &.overlayproduct {
+      font-weight: 300;
+      font-size: 13px;
       line-height: 160%;
    }
    &.outofstock {
@@ -72,6 +84,24 @@
       font-weight: 400;
       font-size: 16px;
       line-height: 159.96%;
+   }
+   &.overlaytitle {
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 160%;
+   }
+
+   &.calculator {
+      font-weight: 400;
+      font-size: 26px;
+      line-height: 160%;
+      text-transform: uppercase;
+   }
+
+   &.categoryoverlay {
+      font-weight: 400;
+      font-size: 11px;
+      line-height: 120%;
    }
 
    &.left {

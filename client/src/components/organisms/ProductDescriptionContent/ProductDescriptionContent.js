@@ -127,7 +127,7 @@ class ProductDescriptionContent extends React.PureComponent {
                               />
                            );
                         })}
-                        <PricePlug prices={product.prices} />
+                        <PricePlug prices={product.prices} withHeader={true}/>
                      </ul>
                      <button
                         className={styles.root__addtocard}

@@ -1,3 +1,11 @@
 .root {
    margin-bottom: 24px;
+
+   .small {
+      transform: scale(0.5);
+   }
+}
+
+.narrow {
+   margin-bottom: 8px;
 }

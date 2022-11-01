@@ -1,10 +1,12 @@
 @import "src/scss/mixins.scss";
 
 .root {
-   padding: 3px 6px 2px 4px;
-   position: relative;
-   &:hover {
-      background-color: get-color(hovered, base);
-      border-radius: 5px;
+   &__card {
+      padding: 3px 6px 2px 4px;
+      position: relative;
+      &:hover {
+         background-color: get-color(hovered, base);
+         border-radius: 5px;
+      }
    }
 }

@@ -16,12 +16,11 @@ const reducer = (state = initialState, action) => {
          const productIsNew = state.cardArray.some(
             (el) => el.id === action.payload.id
          ); //проверяем есть ли товар с таким айдишником
-
+         let newCardArray;
          if (!productIsNew) {
             // если такрго товара нету то добавляем новый
-            const newCardArray = state.cardArray;
+            newCardArray = state.cardArray;
             newCardArray.push(action.payload);
-            return { ...state, cardArray: newCardArray };
          } else {
             // если он всё же есть надо узнать с такими же он параметрами или нет
             const indexOfSameProduct = state.cardArray.findIndex(
@@ -31,17 +30,21 @@ const reducer = (state = initialState, action) => {
             ); // пробегаемся по корзине и ищем товар с такими же параметрами цвета и парамгрида
             if (indexOfSameProduct === -1) {
                //если такого не нашлось то добавляем новый товар
-               const newCardArray = state.cardArray;
+               newCardArray = state.cardArray;
                newCardArray.push(action.payload);
-               return { ...state, cardArray: newCardArray };
             } else {
                //если всё же товар нашёлся, то меняем у такого товара по индексу кол-во для корзины
-               const newCardArray = state.cardArray;
+               newCardArray = state.cardArray;
                newCardArray[indexOfSameProduct].amount =
                   newCardArray[indexOfSameProduct].amount + 1;
-               return { ...state, cardArray: newCardArray };
             }
          }
+         const newCardTotal = state.cardTotal + 1;
+         return {
+            ...state,
+            cardArray: newCardArray,
+            cardTotal: newCardTotal,
+         };
       }
       default:
          return state;
