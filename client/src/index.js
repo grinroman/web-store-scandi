@@ -5,6 +5,7 @@ import reducer from './reducer';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
+import { SnackbarProvider } from 'notistack';
 import './scss/index.scss';
 
 // const cache = new InMemoryCache({
@@ -44,7 +45,12 @@ root.render(
    <React.StrictMode>
       <Provider store={store}>
          <ApolloProvider client={client}>
-            <App />
+            <SnackbarProvider
+               anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+               autoHideDuration={1000}
+            >
+               <App />
+            </SnackbarProvider>
          </ApolloProvider>
       </Provider>
    </React.StrictMode>

@@ -43,14 +43,13 @@
       position: absolute;
       box-shadow: 0px 0px 10px get-color(hovered, base);
       width: 114px;
-      //  display: flex;
-      //  flex-direction: column;
       top: 110%;
       left: 0px;
    }
 
    &__dropdown_item {
       padding: 8px 0px 8px 20px;
+      background-color: get-color(textdarkmode, base);
       cursor: pointer;
       transition: all $am-transition-time ease;
 

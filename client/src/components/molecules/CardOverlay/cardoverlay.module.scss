@@ -1,0 +1,16 @@
+@import "src/scss/mixins.scss";
+.root {
+   height: 100vh;
+   position: absolute;
+   width: 100vw;
+   background-color: rgba(0, 0, 0, 0.4);
+   z-index: 99;
+   position: fixed;
+   &__overlay_wrapper {
+      position: relative;
+      width: 325px;
+      height: 677px;
+      left: 69%;
+      background-color: get-color(textdarkmode, base);
+   }
+}

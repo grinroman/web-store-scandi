@@ -3,10 +3,11 @@ import Typography from '../Typography/Typography';
 import styles from './addtocardbutton.module.scss';
 class AddToCardButton extends Component {
    render() {
-      const { title } = this.props;
+      const { title, testNotistack } = this.props;
 
       return (
-         <button className={styles.root}>
+         //TODO: компонент нигде не используется
+         <button className={styles.root} onClick={testNotistack}>
             <Typography
                preset="headertextselected"
                color="textdarkmode"

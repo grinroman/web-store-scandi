@@ -3,7 +3,7 @@ import Typography from '../../atoms/Typography/Typography';
 import styles from './header.module.scss';
 import { graphql } from '@apollo/client/react/hoc';
 import Logo from '../../atoms/Logo/Logo';
-import CartIcon from '../../atoms/CartIcon/CartIcon';
+import CardIcon from '../../atoms/CardIcon/CardIcon';
 import clsx from 'clsx';
 import Dropdown from '../Dropdown/Dropdown';
 import SmallSpinner from '../../atoms/SmallSpinner/SmallSpinner';
@@ -32,7 +32,12 @@ class Header extends Component {
    };
 
    render() {
-      const { data, selectedCategory, redirectToProductPage } = this.props;
+      const {
+         data,
+         selectedCategory,
+         redirectToProductPage,
+         setModalIsActive,
+      } = this.props;
 
       const { loading, categories, currencies } = data;
       return (
@@ -82,7 +87,7 @@ class Header extends Component {
                ) : (
                   <Dropdown currencies={currencies} />
                )}
-               <CartIcon />
+               <CardIcon setModalIsActive={setModalIsActive} />
             </div>
          </header>
       );

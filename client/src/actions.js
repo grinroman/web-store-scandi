@@ -7,3 +7,7 @@ export const callRedirectToPLP = (redirect) => ({
    type: 'REDIRECT_TO_PLP',
    payload: redirect,
 });
+
+export const addProductToCard = (productInfo) => {
+   return { type: 'ADD_PRODUCT_TO_CARD', payload: productInfo };
+};

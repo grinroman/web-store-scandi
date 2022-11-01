@@ -1,25 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component, PureComponent } from 'react';
 import Typography from '../../atoms/Typography/Typography';
 import styles from './paramgrid.module.scss';
 import clsx from 'clsx';
-export default class ParamGrid extends Component {
-   shouldComponentUpdate(prevProps) {
-      if (prevProps.selectedParamArray !== this.props.selectedParamArray) {
-         return true;
-      }
-      return false;
-   }
-
+export default class ParamGrid extends PureComponent {
    componentDidMount() {
       this.props.setSelectedParamArray(
          this.props.attributeIndex,
-         this.props.sizegrid.items[0].value,
-         true
-      );
-      this.props.setSelectedParamArray(
-         this.props.attributeIndex,
          this.props.sizegrid.items[0].value
-      ); //TODO: при добавлении нового элемента в массив выбранных категорий по умолчанию сразу его устанавливать
+      );
    }
 
    render() {

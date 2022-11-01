@@ -11,6 +11,10 @@ const mapStateToProps = (state) => {
 };
 
 class ProductDescriptionPage extends React.Component {
+   // componentDidMount() {
+   //    console.log('mounted!');
+   // }
+
    render() {
       const { redurectToPLP } = this.props;
 

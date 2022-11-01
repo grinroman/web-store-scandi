@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
 import { graphql } from '@apollo/client/react/hoc';
 import { getSingleProduct } from '../../../graphql/queries';
+import { addProductToCard } from '../../../actions';
+import { connect } from 'react-redux';
 import BigSpinner from '../../atoms/BigSpinner/BigSpinner';
+import { withSnackbar } from 'notistack';
 import styles from './productdescriptioncontent.module.scss';
 import Typography from '../../atoms/Typography/Typography';
 import ProductTitle from '../../molecules/ProductTitle/ProductTitle';
 import ParamGrid from '../../molecules/ParamGrid/ParamGrid';
 import ColorGrid from '../../molecules/ColorGrid/ColorGrid';
 import PricePlug from '../../molecules/PricePlug/PricePlug';
-import AddToCardButton from '../../atoms/AddToCardButton/AddToCardButton';
 import ProductDescription from '../../atoms/ProductDescription/ProductDescription';
 
-class ProductDescriptionContent extends Component {
+class ProductDescriptionContent extends React.PureComponent {
    state = {
       currentBigImage: 0,
       selectedSizeName: null,
@@ -19,12 +21,17 @@ class ProductDescriptionContent extends Component {
       selectedParamArray: [],
       hasColor: false,
    };
+   // componentDidMount() {
+   //    console.log('mounted!');
+   // }
 
    setSelectedParamArray = (arrayIndex, incomingId, added) => {
       if (added) {
          this.setState((state) => {
             const newArr = state.selectedParamArray;
             newArr.push(incomingId);
+            // console.log(newArr);
+
             return { selectedParamArray: newArr };
          });
       } else {
@@ -42,6 +49,22 @@ class ProductDescriptionContent extends Component {
 
    setSelectedColorName = (incomingName) => {
       this.setState({ selectedColorName: incomingName });
+   };
+
+   addNewProductToCard = (productId) => {
+      this.props.enqueueSnackbar(
+         'Product was successfully added to the card!',
+         {
+            variant: 'success',
+            vertical: 'top',
+         }
+      );
+      const { selectedParamArray, selectedColorName } = this.state;
+      this.props.addProductToCard(
+         productId,
+         selectedParamArray,
+         selectedColorName
+      );
    };
 
    render() {
@@ -80,7 +103,7 @@ class ProductDescriptionContent extends Component {
                            name={product.name}
                         />
                         {product.attributes.map((currentAttribute, index) => {
-                           if (currentAttribute.id !== 'Color')
+                           if (currentAttribute.id !== 'Color') {
                               return (
                                  <ParamGrid
                                     key={currentAttribute.id}
@@ -92,6 +115,7 @@ class ProductDescriptionContent extends Component {
                                     }
                                  />
                               );
+                           }
                            return (
                               <ColorGrid
                                  key={currentAttribute.id}
@@ -105,7 +129,20 @@ class ProductDescriptionContent extends Component {
                         })}
                         <PricePlug prices={product.prices} />
                      </ul>
-                     <AddToCardButton title={`add to card`} />
+                     <button
+                        className={styles.root__addtocard}
+                        onClick={() => {
+                           this.addNewProductToCard(product.id);
+                        }}
+                     >
+                        <Typography
+                           preset="headertextselected"
+                           color="textdarkmode"
+                           align="center"
+                        >
+                           add to card
+                        </Typography>
+                     </button>
                      <ProductDescription
                         descriptionString={product.description}
                      />
@@ -117,7 +154,28 @@ class ProductDescriptionContent extends Component {
    }
 }
 
-export default graphql(getSingleProduct, {
-   options: (props) => ({ variables: { id: props.productId } }),
-   // refetchQueries: [{ query: getSingleProduct }], //TODO: обновлять кэш!!!
-})(ProductDescriptionContent);
+const mapDispatchToProps = (dispatch) => {
+   return {
+      addProductToCard: (productId, selectedParamArray, selectedColorName) =>
+         dispatch(
+            addProductToCard({
+               id: productId,
+               paramgrid: selectedParamArray,
+               color: selectedColorName,
+               amount: 1,
+            })
+         ),
+   };
+};
+
+let updatedComponent = connect(
+   null,
+   mapDispatchToProps
+)(
+   graphql(getSingleProduct, {
+      options: (props) => ({ variables: { id: props.productId } }),
+      // refetchQueries: [{ query: getSingleProduct }], //TODO: обновлять кэш!!!
+   })(ProductDescriptionContent)
+);
+
+export default withSnackbar(updatedComponent);

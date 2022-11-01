@@ -5,23 +5,33 @@ import CardPage from './components/pages/CardPage';
 import ProductListingPage from './components/pages/ProductListingPage';
 import ProductDescriptionPage from './components/pages/ProductDescriptionPage';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import CardOverlay from './components/molecules/CardOverlay/CardOverlay';
 
 class App extends React.Component {
-   state = { selectedCategory: 'all' };
+   state = { selectedCategory: 'all', modalIsActive: true };
 
    setSelectedCategory = (name) => {
       this.setState({ selectedCategory: name });
    };
 
-   render() {
-      const { selectedCategory } = this.state;
+   setModalIsActive = () => {
+      this.setState((state) => ({
+         modalIsActive: !state.modalIsActive, //TODO: закрывать список при нажатии вне его
+      }));
+   };
 
+   render() {
+      const { selectedCategory, modalIsActive } = this.state;
       return (
          <Router>
             <Header
                selectedCategory={selectedCategory}
                setSelectedCategory={this.setSelectedCategory}
+               setModalIsActive={this.setModalIsActive}
             />
+            {modalIsActive && (
+               <CardOverlay setModalIsActive={this.setModalIsActive} />
+            )}
             <Routes>
                <Route
                   path="/"

@@ -5,7 +5,6 @@ import Dropdown from '../Dropdown/Dropdown';
 import SmallSpinner from '../../atoms/SmallSpinner/SmallSpinner';
 import { connect } from 'react-redux';
 import styles from './cardproduct.module.scss';
-import CartIcon from '../../atoms/CartIcon/CartIcon';
 import AddCardIcon from '../../atoms/AddCardIcon/AddCardIcon';
 import { Navigate } from 'react-router-dom';
 import { callRedirectToPLP } from '../../../actions';

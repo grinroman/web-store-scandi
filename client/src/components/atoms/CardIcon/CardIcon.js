@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
-import styles from './carticon.module.scss';
+import styles from './cardicon.module.scss';
 import clsx from 'clsx';
 
-export default class CartIcon extends Component {
+export default class CardIcon extends Component {
+   state = {
+      isActive: true,
+   };
+
    render() {
-      const { isForCard } = this.props;
+      const { isForCard, setModalIsActive } = this.props;
       return (
-         <div className={clsx(styles.root, isForCard && styles.addcard)}>
+         <div
+            className={clsx(styles.root, isForCard && styles.addcard)}
+            onClick={setModalIsActive}
+         >
             <svg
                width="20"
                height="20"
