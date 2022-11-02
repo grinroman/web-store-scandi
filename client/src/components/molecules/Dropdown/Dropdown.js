@@ -6,13 +6,6 @@ import { connect } from 'react-redux';
 import { currencyChange } from '../../../actions';
 import bindActionCreators from 'redux';
 
-const mapStateToProps = (state) => {
-   return { currentCurrency: state.currentCurrency };
-};
-const mapDispatchToProps = (dispatch) => {
-   return { currencyChange: (symbol) => dispatch(currencyChange(symbol)) };
-};
-
 class Dropdown extends React.PureComponent {
    //TODO: оптимизация если валюта не меняется при нажатии на кнопку текущей валбты - PureComponent
    constructor(props) {
@@ -96,6 +89,13 @@ class Dropdown extends React.PureComponent {
       );
    }
 }
+
+const mapStateToProps = (state) => {
+   return { currentCurrency: state.currentCurrency };
+};
+const mapDispatchToProps = (dispatch) => {
+   return { currencyChange: (symbol) => dispatch(currencyChange(symbol)) };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dropdown);
 // export default Dropdown;

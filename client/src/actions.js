@@ -11,3 +11,8 @@ export const callRedirectToPLP = (redirect) => ({
 export const addProductToCard = (productInfo) => {
    return { type: 'ADD_PRODUCT_TO_CARD', payload: productInfo };
 };
+
+
+export const deleteProductFromCard = (productInfo) => {
+   return { type: 'DELETE_PRODUCT_FROM_CARD', payload: productInfo };
+};

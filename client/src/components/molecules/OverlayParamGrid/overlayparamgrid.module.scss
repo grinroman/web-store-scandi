@@ -1,6 +1,12 @@
 @import "src/scss/mixins.scss";
 
 .root {
+
+   .selected{
+      background-color: get-color(paragraph, base)
+   }
+
+
    &__params_wrapper {
       display: flex;
       justify-content: flex-start;

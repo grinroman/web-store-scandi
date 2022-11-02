@@ -6,10 +6,16 @@
    background-color: rgba(0, 0, 0, 0.4);
    z-index: 99;
    position: fixed;
+   overflow: scroll;
+
+   &__products_wrapper {
+      padding-bottom: 40px;
+   }
+
    &__overlay_wrapper {
       position: relative;
       width: 325px;
-      height: 642px;
+      min-height: 642px;
       left: 69%;
       top: 80px;
       background-color: get-color(textdarkmode, base);
@@ -21,5 +27,11 @@
       & p {
          display: inline-block;
       }
+   }
+
+   &__total {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
    }
 }

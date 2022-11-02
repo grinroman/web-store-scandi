@@ -1,0 +1,19 @@
+@import "src/scss/variables";
+@import "src/scss/mixins.scss";
+
+.root {
+   .outline {
+      outline: 1px solid get-color(salad, base);
+      outline-offset: 1.1px;
+   }
+
+   &__colorgrid {
+      display: flex;
+      &__item {
+         width: 18px;
+         height: 18px;
+         background-color: get-color(hovered, base);
+         margin-right: 6px;
+      }
+   }
+}

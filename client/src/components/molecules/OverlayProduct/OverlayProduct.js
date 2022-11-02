@@ -5,14 +5,49 @@ import { getSingleProduct } from '../../../graphql/queries';
 import { connect } from 'react-redux';
 import SmallSpinner from '../../atoms/SmallSpinner/SmallSpinner';
 import styles from './overlayproduct.module.scss';
-import PricePlug from '../PricePlug/PricePlug';
+import PricePlugOverlay from '../PricePlugOverlay/PricePlugOverlay';
 import OverlayParamGrid from '../OverlayParamGrid/OverlayParamGrid';
+import OverlayColorGrid from '../OverlayColorGrid/OverlayColorGrid';
 
 class OverlayProduct extends Component {
    state = { amount: 1 };
 
+   incrementAmount = () => {
+      this.setState((state) => ({
+         amount: state.amount + 1,
+      }));
+      const { data, productInfo } = this.props;
+      this.props.addProductToCard(
+         data.product.id,
+         productInfo.paramgrid,
+         productInfo.color,
+         this.state.amount
+      );
+   };
+   decrementAmount = () => {
+      const { data, productInfo } = this.props;
+
+      if (this.state.amount === 1) {
+         this.props.deleteProductFromCard(
+            data.product.id,
+            productInfo.paramgrid,
+            productInfo.color
+         );
+      } else {
+         this.setState((state) => ({
+            amount: state.amount - 1,
+         }));
+
+         this.props.deleteProductFromCard(
+            data.product.id,
+            productInfo.paramgrid,
+            productInfo.color
+         );
+      }
+   };
+
    render() {
-      const { productInfo, data, currentCurrency } = this.props;
+      const { productInfo, data, accumuclateTotal } = this.props;
       const { loading, product } = data;
 
       //TODO: заменить на svg
@@ -30,38 +65,47 @@ class OverlayProduct extends Component {
                      <Typography preset="overlayproduct" component="li">
                         {product.name}
                      </Typography>
-                     <PricePlug prices={product.prices} small={true} />
-                     {product.attributes.map((currentAttribute) => {
+                     <PricePlugOverlay
+                        prices={product.prices}
+                        accumuclateTotal={accumuclateTotal}
+                     />
+                     {product.attributes.map((currentAttribute, index) => {
                         if (currentAttribute.id !== 'Color') {
                            return (
                               <OverlayParamGrid
                                  paramgrid={currentAttribute}
                                  key={currentAttribute.id}
+                                 selectedAttribute={
+                                    productInfo.paramgrid[index]
+                                 }
                               />
                            );
                         }
-
-                        return <p>heh</p>;
+                        return (
+                           <OverlayColorGrid
+                              colorgrid={currentAttribute}
+                              key={currentAttribute.id}
+                              selectedAttribute={productInfo.color}
+                           />
+                        );
                      })}
                   </ul>
                   <div className={styles.root__amount_wrapper}>
-                     <Typography
-                        preset="calculator"
+                     <button
                         className={styles.root__calculator}
-                        component="button"
+                        onClick={this.incrementAmount}
                      >
                         +
-                     </Typography>
+                     </button>
                      <Typography preset="calculator" component="div">
                         {productInfo.amount}
                      </Typography>
-                     <Typography
-                        preset="calculator"
+                     <button
                         className={styles.root__calculator}
-                        component="button"
+                        onClick={this.decrementAmount}
                      >
                         -
-                     </Typography>
+                     </button>
                   </div>
                   <img
                      className={styles.root__image}
@@ -74,12 +118,6 @@ class OverlayProduct extends Component {
       );
    }
 }
-
-// const mapStateToProps = (state) => {
-//    return {
-//       currentCurrency: state.currentCurrency,
-//    };
-// };
 
 export default graphql(getSingleProduct, {
    options: (props) => ({ variables: { id: props.productInfo.id } }),

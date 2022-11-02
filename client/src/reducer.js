@@ -1,15 +1,28 @@
+import Cookies from 'js-cookie';
+
 const initialState = {
-   currentCurrency: '$',
+   currentCurrency: Cookies.get('currentCurrency')
+      ? JSON.parse(Cookies.get('currentCurrency'))
+      : '$',
    redurectToPLP: true,
    redirectToCardPage: false,
-   cardTotal: 0,
-   cardArray: [],
+   cardTotal: Cookies.get('cardTotal')
+      ? JSON.parse(Cookies.get('cardTotal'))
+      : 0,
+   cardArray: Cookies.get('cardArray')
+      ? JSON.parse(Cookies.get('cardArray'))
+      : [],
+   // cardTotalInCurrency: Cookies.get('cardTotalInCurrency')
+   //    ? JSON.parse(Cookies.get('cardArray'))
+   //    : 0,
 };
 
 const reducer = (state = initialState, action) => {
    switch (action.type) {
-      case 'CURRENCY_CHANGE':
+      case 'CURRENCY_CHANGE': {
+         Cookies.set('currentCurrency', JSON.stringify(action.payload));
          return { ...state, currentCurrency: action.payload };
+      }
       case 'REDIRECT_TO_PLP':
          return { ...state, redurectToPLP: action.payload };
       case 'ADD_PRODUCT_TO_CARD': {
@@ -40,6 +53,35 @@ const reducer = (state = initialState, action) => {
             }
          }
          const newCardTotal = state.cardTotal + 1;
+         Cookies.set('cardArray', JSON.stringify(newCardArray));
+         Cookies.set('cardTotal', JSON.stringify(newCardTotal));
+         return {
+            ...state,
+            cardArray: newCardArray,
+            cardTotal: newCardTotal,
+         };
+      }
+      case 'DELETE_PRODUCT_FROM_CARD': {
+         //проверить сколько товаров
+         // id, paramgrid, color
+
+         const newCardArray = state.cardArray;
+         //находим индекс объекта у которого надо изменить кол-во или удалить
+         const indexOfUpdatingProd = newCardArray.findIndex(
+            (el) =>
+               el.paramgrid.join('') === action.payload.paramgrid.join('') &&
+               el.color === action.payload.color &&
+               el.id === action.payload.id
+         );
+         //смотрим сколько продуктов на текущий момент в данном объекте
+         if (newCardArray[indexOfUpdatingProd].amount === 1) {
+            newCardArray.splice(indexOfUpdatingProd, 1);
+         } else {
+            newCardArray[indexOfUpdatingProd].amount -= 1;
+         }
+         let newCardTotal = state.cardTotal - 1;
+         Cookies.set('cardArray', JSON.stringify(newCardArray));
+         Cookies.set('cardTotal', JSON.stringify(newCardTotal));
          return {
             ...state,
             cardArray: newCardArray,

@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import styles from './overlayparamgrid.module.scss';
 export default class OverlayParamGrid extends Component {
    render() {
-      const { paramgrid } = this.props;
+      const { paramgrid, selectedAttribute } = this.props;
 
       return (
          <div className={styles.root}>
@@ -14,8 +14,12 @@ export default class OverlayParamGrid extends Component {
                {paramgrid.items.map((el) => (
                   <Typography
                      key={el.id}
-                     className={clsx(styles.root__params_wrapper__item)}
+                     className={clsx(
+                        styles.root__params_wrapper__item,
+                        selectedAttribute === el.value && styles['selected']
+                     )}
                      preset="categoryoverlay"
+                     color={selectedAttribute === el.value && 'textdarkmode'}
                   >
                      {el.value}
                   </Typography>

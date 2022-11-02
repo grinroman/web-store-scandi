@@ -9,19 +9,6 @@ import AddCardIcon from '../../atoms/AddCardIcon/AddCardIcon';
 import { Navigate } from 'react-router-dom';
 import { callRedirectToPLP } from '../../../actions';
 
-const mapStateToProps = (state) => {
-   return {
-      currentCurrency: state.currentCurrency,
-      redurectToPLP: state.redurectToPLP,
-   };
-};
-
-const mapDispatchToProps = (dispatch) => {
-   return {
-      callRedirectToPLP: (redirect) => dispatch(callRedirectToPLP(redirect)),
-   };
-};
-
 class CardProduct extends Component {
    state = { redirectToProductPage: false };
 
@@ -88,5 +75,18 @@ class CardProduct extends Component {
       );
    }
 }
+
+const mapStateToProps = (state) => {
+   return {
+      currentCurrency: state.currentCurrency,
+      redurectToPLP: state.redurectToPLP,
+   };
+};
+
+const mapDispatchToProps = (dispatch) => {
+   return {
+      callRedirectToPLP: (redirect) => dispatch(callRedirectToPLP(redirect)),
+   };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(CardProduct);

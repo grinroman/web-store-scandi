@@ -11,17 +11,6 @@ import { Navigate } from 'react-router-dom';
 import { getCategoriesTitles } from '../../../graphql/queries.js';
 import { connect } from 'react-redux';
 import { callRedirectToPLP } from '../../../actions';
-const mapStateToProps = (state) => {
-   return {
-      redurectToPLP: state.redurectToPLP,
-   };
-};
-
-const mapDispatchToProps = (dispatch) => {
-   return {
-      callRedirectToPLP: (redirect) => dispatch(callRedirectToPLP(redirect)),
-   };
-};
 
 class Header extends Component {
    state = { redirectToProductPage: false };
@@ -93,6 +82,18 @@ class Header extends Component {
       );
    }
 }
+
+const mapStateToProps = (state) => {
+   return {
+      redurectToPLP: state.redurectToPLP,
+   };
+};
+
+const mapDispatchToProps = (dispatch) => {
+   return {
+      callRedirectToPLP: (redirect) => dispatch(callRedirectToPLP(redirect)),
+   };
+};
 
 export default graphql(getCategoriesTitles)(
    connect(mapStateToProps, mapDispatchToProps)(Header)
