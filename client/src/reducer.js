@@ -4,7 +4,6 @@ const initialState = {
    currentCurrency: Cookies.get('currentCurrency')
       ? JSON.parse(Cookies.get('currentCurrency'))
       : '$',
-   redirectToPLP: true,
    cardTotal: Cookies.get('cardTotal')
       ? JSON.parse(Cookies.get('cardTotal'))
       : 0,
@@ -38,10 +37,6 @@ const reducer = (state = initialState, action) => {
             cardTotalInCurrency: newCardTotalInCurrency,
          };
       }
-      case 'REDIRECT_TO_PLP':
-         return { ...state, redirectToPLP: action.payload };
-      case 'REDIRECT_TO_CARD':
-         return { ...state, redirectToCard: action.payload };
       case 'ADD_PRODUCT_TO_CARD': {
          const productIsNew = state.cardArray.some(
             (el) => el.id === action.payload.id

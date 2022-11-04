@@ -3,11 +3,6 @@ export const currencyChange = (newCurrency) => ({
    payload: newCurrency, // on the level of react-redux actions can be not pure
 });
 
-export const callRedirectToPLP = (redirect) => ({
-   type: 'REDIRECT_TO_PLP',
-   payload: redirect,
-});
-
 export const callRedirectToCard = (redirect) => {
    return {
       type: 'REDIRECT_TO_CARD',

@@ -9,19 +9,13 @@ class CardPage extends React.PureComponent {
    }
 
    render() {
-      const { redirectToPLP } = this.props;
       return (
          <Container>
-            {redirectToPLP && <Navigate to="/" replace={false} />}
             <div>kek!</div>
          </Container>
       );
    }
 }
 
-const mapStateToProps = (state) => {
-   return {
-      redirectToPLP: state.redirectToPLP,
-   };
-};
-export default connect(mapStateToProps)(CardPage);
+
+export default CardPage;

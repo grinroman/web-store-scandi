@@ -2,25 +2,19 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import EmptyBasket from '../../atoms/EmptyBaseket/EmptyBasket';
 import Typography from '../../atoms/Typography/Typography';
-import {
-   addProductToCard,
-   deleteProductFromCard,
-   // callRedirectToCard,
-   callRedirectToPLP,
-} from '../../../actions';
+import { addProductToCard, deleteProductFromCard } from '../../../actions';
+import { Link } from 'react-router-dom';
 import OverlayProduct from '../OverlayProduct/OverlayProduct';
 import styles from './cardoverlay.module.scss';
 import OverlayButton from '../../atoms/OverlayButton/OverlayButton';
 class CardOverlay extends Component {
    state = { redirectToCard: false };
 
-   checkout = () => {
-      console.log('here must be checkout logic!');
-   };
    redirectToCard = () => {
-      this.props.callRedirectToPLP(false);
-      this.props.setRedirectToCard(true);
       this.props.setModalIsActive();
+   };
+   checkout = () => {
+      // console.log('logic of purchasing!');
    };
 
    render() {
@@ -73,11 +67,13 @@ class CardOverlay extends Component {
                            </Typography>
                         </div>
                         <div className={styles.root__buttons}>
-                           <OverlayButton
-                              colorPreset={'paragraph'}
-                              text={'view bag'}
-                              action={this.redirectToCard}
-                           />
+                           <Link to="/card">
+                              <OverlayButton
+                                 colorPreset={'paragraph'}
+                                 text={'view bag'}
+                                 action={this.redirectToCard}
+                              />
+                           </Link>
                            <OverlayButton
                               colorPreset={'textdarkmode'}
                               text={'checkout'}
@@ -99,11 +95,8 @@ const mapStateToProps = (state) => {
       cardTotal: state.cardTotal,
       cardArray: state.cardArray,
       cardTotalInCurrency: state.cardTotalInCurrency,
-      redirectToCard: state.redirectToCard,
    };
 };
-
-//
 
 const mapDispatchToProps = (dispatch) => {
    return {
@@ -137,9 +130,6 @@ const mapDispatchToProps = (dispatch) => {
                pricesArray,
             })
          ),
-
-      // callRedirectToCard: (redirect) => dispatch(callRedirectToCard(redirect)),
-      callRedirectToPLP: (redirect) => dispatch(callRedirectToPLP(redirect)),
    };
 };
 

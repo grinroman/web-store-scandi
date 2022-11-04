@@ -7,17 +7,14 @@ import CardIcon from '../../atoms/CardIcon/CardIcon';
 import clsx from 'clsx';
 import Dropdown from '../Dropdown/Dropdown';
 import SmallSpinner from '../../atoms/SmallSpinner/SmallSpinner';
-import { Navigate } from 'react-router-dom';
 import { getCategoriesTitles } from '../../../graphql/queries.js';
 import { connect } from 'react-redux';
-import { callRedirectToPLP, callRedirectToCard } from '../../../actions';
+import { Link } from 'react-router-dom';
 
 class Header extends Component {
    state = { redirectToProductPage: false };
 
    changeCategoryAndRedirect = (elName) => {
-      this.props.setRedirectToCard(false);
-      this.props.callRedirectToPLP(true);
       this.props.setSelectedCategory(elName);
    };
 
@@ -43,22 +40,24 @@ class Header extends Component {
                               this.changeCategoryAndRedirect(el.name)
                            }
                         >
-                           <Typography
-                              component="button"
-                              preset={
-                                 selectedCategory === el.name
-                                    ? 'headertextselected'
-                                    : 'headertextblank'
-                              }
-                              color={
-                                 selectedCategory !== el.name
-                                    ? 'paragraph'
-                                    : 'salad'
-                              }
-                              className={styles.root__categories__button}
-                           >
-                              {el.name}
-                           </Typography>
+                           <Link to="/">
+                              <Typography
+                                 component="button"
+                                 preset={
+                                    selectedCategory === el.name
+                                       ? 'headertextselected'
+                                       : 'headertextblank'
+                                 }
+                                 color={
+                                    selectedCategory !== el.name
+                                       ? 'paragraph'
+                                       : 'salad'
+                                 }
+                                 className={styles.root__categories__button}
+                              >
+                                 {el.name}
+                              </Typography>
+                           </Link>
                         </li>
                      );
                   })}
@@ -78,20 +77,4 @@ class Header extends Component {
    }
 }
 
-const mapStateToProps = (state) => {
-   return {
-      redurectToPLP: state.redurectToPLP,
-      redirectToCard: state.redirectToCard,
-   };
-};
-
-const mapDispatchToProps = (dispatch) => {
-   return {
-      callRedirectToPLP: (redirect) => dispatch(callRedirectToPLP(redirect)),
-      callRedirectToCard: (redirect) => dispatch(callRedirectToCard(redirect)),
-   };
-};
-
-export default graphql(getCategoriesTitles)(
-   connect(mapStateToProps, mapDispatchToProps)(Header)
-);
+export default graphql(getCategoriesTitles)(Header);
