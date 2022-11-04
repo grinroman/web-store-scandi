@@ -8,6 +8,8 @@ import styles from './overlayproduct.module.scss';
 import PricePlugOverlay from '../PricePlugOverlay/PricePlugOverlay';
 import OverlayParamGrid from '../OverlayParamGrid/OverlayParamGrid';
 import OverlayColorGrid from '../OverlayColorGrid/OverlayColorGrid';
+import PlusIcon from '../../atoms/PlusIcon/PlusIcon';
+import MinusIcon from '../../atoms/MinusIcon/MinusIcon';
 
 class OverlayProduct extends Component {
    state = { amount: 1 };
@@ -21,7 +23,8 @@ class OverlayProduct extends Component {
          data.product.id,
          productInfo.paramgrid,
          productInfo.color,
-         this.state.amount
+         this.state.amount,
+         data.product.prices
       );
    };
    decrementAmount = () => {
@@ -31,7 +34,8 @@ class OverlayProduct extends Component {
          this.props.deleteProductFromCard(
             data.product.id,
             productInfo.paramgrid,
-            productInfo.color
+            productInfo.color,
+            data.product.prices
          );
       } else {
          this.setState((state) => ({
@@ -41,13 +45,14 @@ class OverlayProduct extends Component {
          this.props.deleteProductFromCard(
             data.product.id,
             productInfo.paramgrid,
-            productInfo.color
+            productInfo.color,
+            data.product.prices
          );
       }
    };
 
    render() {
-      const { productInfo, data, accumuclateTotal } = this.props;
+      const { productInfo, data } = this.props;
       const { loading, product } = data;
 
       //TODO: заменить на svg
@@ -65,10 +70,7 @@ class OverlayProduct extends Component {
                      <Typography preset="overlayproduct" component="li">
                         {product.name}
                      </Typography>
-                     <PricePlugOverlay
-                        prices={product.prices}
-                        accumuclateTotal={accumuclateTotal}
-                     />
+                     <PricePlugOverlay prices={product.prices} />
                      {product.attributes.map((currentAttribute, index) => {
                         if (currentAttribute.id !== 'Color') {
                            return (
@@ -95,7 +97,7 @@ class OverlayProduct extends Component {
                         className={styles.root__calculator}
                         onClick={this.incrementAmount}
                      >
-                        +
+                        <PlusIcon />
                      </button>
                      <Typography preset="calculator" component="div">
                         {productInfo.amount}
@@ -104,7 +106,7 @@ class OverlayProduct extends Component {
                         className={styles.root__calculator}
                         onClick={this.decrementAmount}
                      >
-                        -
+                        <MinusIcon />
                      </button>
                   </div>
                   <img

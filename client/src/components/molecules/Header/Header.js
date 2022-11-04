@@ -10,28 +10,23 @@ import SmallSpinner from '../../atoms/SmallSpinner/SmallSpinner';
 import { Navigate } from 'react-router-dom';
 import { getCategoriesTitles } from '../../../graphql/queries.js';
 import { connect } from 'react-redux';
-import { callRedirectToPLP } from '../../../actions';
+import { callRedirectToPLP, callRedirectToCard } from '../../../actions';
 
 class Header extends Component {
    state = { redirectToProductPage: false };
 
    changeCategoryAndRedirect = (elName) => {
-      this.props.setSelectedCategory(elName);
+      this.props.setRedirectToCard(false);
       this.props.callRedirectToPLP(true);
+      this.props.setSelectedCategory(elName);
    };
 
    render() {
-      const {
-         data,
-         selectedCategory,
-         redirectToProductPage,
-         setModalIsActive,
-      } = this.props;
+      const { data, selectedCategory, setModalIsActive } = this.props;
 
       const { loading, categories, currencies } = data;
       return (
          <header className={styles.root}>
-            {redirectToProductPage && <Navigate to="/" replace={false} />}
             {loading ? (
                <SmallSpinner />
             ) : (
@@ -86,12 +81,14 @@ class Header extends Component {
 const mapStateToProps = (state) => {
    return {
       redurectToPLP: state.redurectToPLP,
+      redirectToCard: state.redirectToCard,
    };
 };
 
 const mapDispatchToProps = (dispatch) => {
    return {
       callRedirectToPLP: (redirect) => dispatch(callRedirectToPLP(redirect)),
+      callRedirectToCard: (redirect) => dispatch(callRedirectToCard(redirect)),
    };
 };
 

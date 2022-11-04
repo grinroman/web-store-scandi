@@ -19,9 +19,11 @@
    }
 
    &__dropdown_btn {
+      z-index: 999;
       display: flex;
       margin-right: 15px;
       padding: 3px 5px;
+
       box-sizing: border-box;
       &:hover {
          background-color: get-color(hovered, base);
@@ -39,12 +41,21 @@
       }
    }
 
+   &__dropdown {
+      top: 0;
+      left: 0;
+      position: fixed;
+      width: 100vw;
+      height: 100vh;
+      z-index: 100;
+   }
+
    &__dropdown_content {
-      position: absolute;
+      position: relative;
       box-shadow: 0px 0px 10px get-color(hovered, base);
       width: 114px;
-      top: 110%;
-      left: 0px;
+      top: 10%;
+      left: 80.1%;
    }
 
    &__dropdown_item {

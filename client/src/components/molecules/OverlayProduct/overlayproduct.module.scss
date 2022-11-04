@@ -4,6 +4,7 @@
    margin-bottom: 34px;
    display: flex;
    height: 190px;
+   justify-content: space-around;
 
    &__content {
       width: 50%;
@@ -11,7 +12,7 @@
    }
 
    &__amount_wrapper {
-      width: 10%;
+      width: 9%;
       height: 100%;
       margin: 0% 1%;
       display: flex;
@@ -21,7 +22,7 @@
    }
 
    &__calculator {
-      height: 27px;
+      height: 25px;
       width: 100%;
       border: 1px solid get-color(paragraph, base);
       display: flex;
@@ -36,5 +37,8 @@
       width: 38%;
       height: 190px;
       object-fit: contain;
+      display: flex;
+      justify-content: center;
+      align-items: center;
    }
 }

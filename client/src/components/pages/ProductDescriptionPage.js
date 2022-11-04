@@ -4,26 +4,20 @@ import { connect } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 import Container from '../templates/Container/Container';
 import ProductDescriptionContent from '../organisms/ProductDescriptionContent/ProductDescriptionContent';
-const mapStateToProps = (state) => {
-   return {
-      redurectToPLP: state.redurectToPLP,
-   };
-};
 
 class ProductDescriptionPage extends React.Component {
-   // componentDidMount() {
-   //    console.log('mounted!');
-   // }
-
+   componentDidMount() {
+      // console.log('mounted pdp!');
+   }
    render() {
-      const { redurectToPLP } = this.props;
-
+      const { redirectToPLP, redirectToCard } = this.props;
       const urlString = window.location.href; //TODO: добавить истоорию поиска чтоби вернукться на предыдущую страницу
       const urlArr = urlString.split('/');
       const id = urlArr[urlArr.length - 1];
       return (
          <>
-            {redurectToPLP && <Navigate to="/" replace={false} />}
+            {redirectToPLP && <Navigate to="/" replace={false} />}
+            {redirectToCard && <Navigate to="/card" replace={false} />}
             <Container>
                <ProductDescriptionContent productId={id} />
             </Container>
@@ -31,5 +25,11 @@ class ProductDescriptionPage extends React.Component {
       );
    }
 }
+
+const mapStateToProps = (state) => {
+   return {
+      redirectToPLP: state.redirectToPLP,
+   };
+};
 
 export default connect(mapStateToProps)(ProductDescriptionPage);

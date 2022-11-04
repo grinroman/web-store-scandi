@@ -6,24 +6,24 @@
    background-color: rgba(0, 0, 0, 0.4);
    z-index: 99;
    position: fixed;
-   overflow: scroll;
+   overflow-x: auto;
 
    &__products_wrapper {
-      padding-bottom: 40px;
+      padding-bottom: 20px;
    }
 
    &__overlay_wrapper {
       position: relative;
       width: 325px;
-      min-height: 642px;
-      left: 69%;
+      min-height: 445px;
+      left: 70%;
       top: 80px;
       background-color: get-color(textdarkmode, base);
-      padding: 32px 16px;
+      padding: 20px 16px 16px 10px;
    }
 
    &__header {
-      padding-bottom: 32px;
+      padding-bottom: 20px;
       & p {
          display: inline-block;
       }
@@ -33,5 +33,13 @@
       width: 100%;
       display: flex;
       justify-content: space-between;
+   }
+
+   &__buttons {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 20px;
    }
 }

@@ -2,15 +2,17 @@ import React from 'react';
 import BigSpinner from '../atoms/BigSpinner/BigSpinner';
 import ProductList from '../organisms/ProductList/ProductList';
 import Container from '../templates/Container/Container';
+import { Navigate } from 'react-router-dom';
 import { graphql } from '@apollo/client/react/hoc';
-import { getListProducts, getSingleProduct } from '../../graphql/queries.js';
+import { getListProducts } from '../../graphql/queries.js';
 
 class ProductListingPage extends React.Component {
    render() {
-      const { data, selectedCategory } = this.props;
+      const { data, selectedCategory, redirectToCard } = this.props;
       const { loading, category } = data;
       return (
          <>
+            {redirectToCard && <Navigate to="/card" replace={false} />}
             <Container>
                {loading ? (
                   <BigSpinner />

@@ -21,16 +21,12 @@ class ProductDescriptionContent extends React.PureComponent {
       selectedParamArray: [],
       hasColor: false,
    };
-   // componentDidMount() {
-   //    console.log('mounted!');
-   // }
 
    setSelectedParamArray = (arrayIndex, incomingId, added) => {
       if (added) {
          this.setState((state) => {
             const newArr = state.selectedParamArray;
             newArr.push(incomingId);
-            // console.log(newArr);
 
             return { selectedParamArray: newArr };
          });
@@ -52,18 +48,20 @@ class ProductDescriptionContent extends React.PureComponent {
    };
 
    addNewProductToCard = (productId) => {
+      const { data } = this.props;
+      const { selectedParamArray, selectedColorName } = this.state;
+      this.props.addProductToCard(
+         productId,
+         selectedParamArray,
+         selectedColorName,
+         data.product.prices
+      );
       this.props.enqueueSnackbar(
          'Product was successfully added to the card!',
          {
             variant: 'success',
             vertical: 'top',
          }
-      );
-      const { selectedParamArray, selectedColorName } = this.state;
-      this.props.addProductToCard(
-         productId,
-         selectedParamArray,
-         selectedColorName
       );
    };
 
@@ -127,7 +125,7 @@ class ProductDescriptionContent extends React.PureComponent {
                               />
                            );
                         })}
-                        <PricePlug prices={product.prices} withHeader={true}/>
+                        <PricePlug prices={product.prices} withHeader={true} />
                      </ul>
                      <button
                         className={styles.root__addtocard}
@@ -156,13 +154,19 @@ class ProductDescriptionContent extends React.PureComponent {
 
 const mapDispatchToProps = (dispatch) => {
    return {
-      addProductToCard: (productId, selectedParamArray, selectedColorName) =>
+      addProductToCard: (
+         productId,
+         selectedParamArray,
+         selectedColorName,
+         pricesArray
+      ) =>
          dispatch(
             addProductToCard({
                id: productId,
                paramgrid: selectedParamArray,
                color: selectedColorName,
                amount: 1,
+               pricesArray,
             })
          ),
    };

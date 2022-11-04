@@ -5,12 +5,10 @@ import { connect } from 'react-redux';
 import styles from './priceplugoverlay.module.scss';
 class PricePlugOverlay extends Component {
    render() {
-      const { currentCurrency, prices, accumuclateTotal } = this.props;
+      const { currentCurrency, prices } = this.props;
       const currency = prices.filter(
          ({ currency }) => currency.symbol === currentCurrency
       )[0];
-
-      accumuclateTotal(currency.amount);
 
       return (
          <li className={clsx(styles.root, styles['narrow'])}>

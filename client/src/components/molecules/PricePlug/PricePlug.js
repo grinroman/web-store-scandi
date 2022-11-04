@@ -6,7 +6,6 @@ import styles from './priceplug.module.scss';
 class PricePlug extends Component {
    render() {
       const { prices, currentCurrency, withHeader, small } = this.props;
-      // console.log(currentCurrency);
 
       const currency = prices.filter(
          ({ currency }) => currency.symbol === currentCurrency

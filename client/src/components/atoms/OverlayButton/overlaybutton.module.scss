@@ -1,0 +1,23 @@
+@import "src/scss/mixins.scss";
+
+.root {
+   width: 140px;
+   height: 43px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.viewbag {
+   border: 1px solid get-color(paragraph, base);
+   &:hover {
+      background-color: get-color(hovered, base);
+   }
+}
+
+.checkout {
+   background-color: get-color(salad, base);
+   &:hover {
+      opacity: 0.85;
+   }
+}

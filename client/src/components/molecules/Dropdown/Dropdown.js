@@ -65,25 +65,33 @@ class Dropdown extends React.PureComponent {
                </div>
             </button>
             {isActive && (
-               <ul className={styles.root__dropdown_content}>
-                  {currencies.map((el, index) => {
-                     return (
-                        <li
-                           onClick={() => this.setCurrentCurrency(el.symbol)}
-                           key={index}
-                           className={styles.root__dropdown_item}
-                        >
-                           <Typography
-                              preset="currency"
-                              component="button"
-                              align="left"
+               <div
+                  className={styles.root__dropdown}
+                  onClick={this.setIsActive}
+               >
+                  <ul
+                     className={styles.root__dropdown_content}
+                     onClick={(e) => e.stopPropagation()}
+                  >
+                     {currencies.map((el, index) => {
+                        return (
+                           <li
+                              onClick={() => this.setCurrentCurrency(el.symbol)}
+                              key={index}
+                              className={styles.root__dropdown_item}
                            >
-                              {el.symbol} {el.label}
-                           </Typography>
-                        </li>
-                     );
-                  })}
-               </ul>
+                              <Typography
+                                 preset="currency"
+                                 component="button"
+                                 align="left"
+                              >
+                                 {el.symbol} {el.label}
+                              </Typography>
+                           </li>
+                        );
+                     })}
+                  </ul>
+               </div>
             )}
          </div>
       );

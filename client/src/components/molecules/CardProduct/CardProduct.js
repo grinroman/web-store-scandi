@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import Typography from '../../atoms/Typography/Typography';
-import clsx from 'clsx';
-import Dropdown from '../Dropdown/Dropdown';
-import SmallSpinner from '../../atoms/SmallSpinner/SmallSpinner';
 import { connect } from 'react-redux';
 import styles from './cardproduct.module.scss';
 import AddCardIcon from '../../atoms/AddCardIcon/AddCardIcon';
@@ -12,12 +9,11 @@ import { callRedirectToPLP } from '../../../actions';
 class CardProduct extends Component {
    state = { redirectToProductPage: false };
 
-   cardClick = (e, productId) => {
+   cardClick = (e) => {
       if (
          e.target.tagName.toLowerCase() === 'div' ||
          e.target.tagName.toLowerCase() === 'svg'
       ) {
-         // console.log('add to card!', productId); //TODO: add to card product logic
       } else {
          this.props.callRedirectToPLP(false);
          this.setState({ redirectToProductPage: true });

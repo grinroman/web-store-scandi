@@ -8,7 +8,11 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import CardOverlay from './components/molecules/CardOverlay/CardOverlay';
 
 class App extends React.Component {
-   state = { selectedCategory: 'all', modalIsActive: false };
+   state = {
+      selectedCategory: 'all',
+      modalIsActive: false,
+      redirectToCard: false,
+   };
 
    setSelectedCategory = (name) => {
       this.setState({ selectedCategory: name });
@@ -16,33 +20,49 @@ class App extends React.Component {
 
    setModalIsActive = () => {
       this.setState((state) => ({
-         modalIsActive: !state.modalIsActive, //TODO: закрывать список при нажатии вне его
+         modalIsActive: !state.modalIsActive,
       }));
    };
+   setRedirectToCard = (flag) => {
+      this.setState({ redirectToCard: flag });
+   };
+
+   componentDidMount() {
+      console.log('the whole app mountiong!');
+   }
 
    render() {
-      const { selectedCategory, modalIsActive } = this.state;
+      const { selectedCategory, modalIsActive, redirectToCard } = this.state;
       return (
          <Router>
             <Header
                selectedCategory={selectedCategory}
                setSelectedCategory={this.setSelectedCategory}
                setModalIsActive={this.setModalIsActive}
+               setRedirectToCard={this.setRedirectToCard}
             />
             {modalIsActive && (
-               <CardOverlay setModalIsActive={this.setModalIsActive} />
+               <CardOverlay
+                  setModalIsActive={this.setModalIsActive}
+                  setRedirectToCard={this.setRedirectToCard}
+               />
             )}
             <Routes>
                <Route
                   path="/"
                   element={
-                     <ProductListingPage selectedCategory={selectedCategory} />
+                     <ProductListingPage
+                        selectedCategory={selectedCategory}
+                        redirectToCard={redirectToCard}
+                     />
                   }
                />
                <Route path="/card" element={<CardPage />} />
                <Route
                   path="/product/:id"
-                  element={<ProductDescriptionPage />}
+                  element={
+                     <ProductDescriptionPage redirectToCard={redirectToCard} />
+                  }
                />
                <Route path="*" element={<ErrorPage />} />
             </Routes>
