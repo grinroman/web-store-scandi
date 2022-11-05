@@ -8,12 +8,9 @@ import clsx from 'clsx';
 import Dropdown from '../Dropdown/Dropdown';
 import SmallSpinner from '../../atoms/SmallSpinner/SmallSpinner';
 import { getCategoriesTitles } from '../../../graphql/queries.js';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 class Header extends Component {
-   state = { redirectToProductPage: false };
-
    changeCategoryAndRedirect = (elName) => {
       this.props.setSelectedCategory(elName);
    };

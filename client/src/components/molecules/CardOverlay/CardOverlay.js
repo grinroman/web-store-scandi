@@ -67,7 +67,7 @@ class CardOverlay extends Component {
                            </Typography>
                         </div>
                         <div className={styles.root__buttons}>
-                           <Link to="/card">
+                           <Link to="/cart">
                               <OverlayButton
                                  colorPreset={'paragraph'}
                                  text={'view bag'}

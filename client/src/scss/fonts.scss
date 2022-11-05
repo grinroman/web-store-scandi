@@ -65,6 +65,16 @@ $am-font-family: "Raleway";
    src: url("../../public/fonts/Roboto-Regular.ttf") format("ttf");
    font-style: normal;
    font-weight: 400;
+   font-display: swap; //TODO: подключить остальные шрифты
+}
+
+@font-face {
+   font-family: "Roboto Condensed";
+   src: url("../../public/fonts/RobotoCondensed-Bold.woff") format("woff"),
+      url("../../public/fonts/RobotoCondensed-Bold.eot") format("eot"),
+      url("../../public/fonts/RobotoCondensed-Bold.ttf") format("ttf");
+   font-style: normal;
+   font-weight: 700;
    font-display: swap;
 }
 

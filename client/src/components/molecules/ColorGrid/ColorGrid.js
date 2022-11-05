@@ -12,16 +12,23 @@ class ColorGrid extends Component {
    }
 
    componentDidMount() {
-      this.props.setSelectedColorName(this.props.colorgrid.items[0].id);
+      if (!this.props.haveExistingColor) {
+         this.props.setSelectedColorName(this.props.colorgrid.items[0].id);
+      }
    }
 
    render() {
-      const { selectedColorName, setSelectedColorName, colorgrid } = this.props;
+      const {
+         selectedColorName,
+         setSelectedColorName,
+         colorgrid,
+         haveExistingColor,
+      } = this.props;
       return (
          <li className={styles.root}>
             <Typography preset="optionsgridtitle">{colorgrid.id}</Typography>
             <ul className={styles.root__colorgrid}>
-               {colorgrid.items.map((el, index) => {
+               {colorgrid.items.map((el) => {
                   return (
                      <li
                         key={el.id}
@@ -30,7 +37,9 @@ class ColorGrid extends Component {
                            selectedColorName === el.id && styles['outline']
                         )}
                         style={{ backgroundColor: el.value }}
-                        onClick={() => setSelectedColorName(el.id)}
+                        {...(!haveExistingColor && {
+                           onClick: () => setSelectedColorName(el.id),
+                        })}
                      ></li>
                   );
                })}

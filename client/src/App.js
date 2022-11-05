@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './components/molecules/Header/Header';
 import ErrorPage from './components/pages/ErrorPage';
-import CardPage from './components/pages/CardPage';
+import CartPage from './components/pages/CartPage';
 import ProductListingPage from './components/pages/ProductListingPage';
 import ProductDescriptionPage from './components/pages/ProductDescriptionPage';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -23,13 +23,6 @@ class App extends React.Component {
          modalIsActive: !state.modalIsActive,
       }));
    };
-   setRedirectToCard = (flag) => {
-      this.setState({ redirectToCard: flag });
-   };
-
-   componentDidMount() {
-      console.log('the whole app mountiong!');
-   }
 
    render() {
       const { selectedCategory, modalIsActive, redirectToCard } = this.state;
@@ -39,7 +32,6 @@ class App extends React.Component {
                selectedCategory={selectedCategory}
                setSelectedCategory={this.setSelectedCategory}
                setModalIsActive={this.setModalIsActive}
-               setRedirectToCard={this.setRedirectToCard}
             />
             {modalIsActive && (
                <CardOverlay
@@ -57,7 +49,7 @@ class App extends React.Component {
                      />
                   }
                />
-               <Route path="/card" element={<CardPage />} />
+               <Route path="/cart" element={<CartPage />} />
                <Route
                   path="/product/:id"
                   element={

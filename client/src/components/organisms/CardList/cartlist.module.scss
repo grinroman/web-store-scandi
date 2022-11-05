@@ -1,0 +1,26 @@
+@import "src/scss/mixins.scss";
+.root {
+   width: 100%;
+   padding-bottom: 40px;
+
+   &__header {
+      padding-bottom: 55px;
+   }
+
+   &__items_wrapepr {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+   }
+
+   &__total {
+      width: 100%;
+      height: 200px;
+      border: 1px solid black;
+      border-top: 2px solid get-color(hovered, base);
+
+      &__orderinfo {
+         display: grid;
+      }
+   }
+}

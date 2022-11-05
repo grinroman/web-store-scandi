@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { graphql } from '@apollo/client/react/hoc';
 import Typography from '../../atoms/Typography/Typography';
 import { getSingleProduct } from '../../../graphql/queries';
-import { connect } from 'react-redux';
 import SmallSpinner from '../../atoms/SmallSpinner/SmallSpinner';
 import styles from './overlayproduct.module.scss';
 import PricePlugOverlay from '../PricePlugOverlay/PricePlugOverlay';

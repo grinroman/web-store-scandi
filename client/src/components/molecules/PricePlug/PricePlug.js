@@ -13,11 +13,9 @@ class PricePlug extends Component {
 
       return (
          <li className={clsx(styles.root, small && styles['narrow'])}>
-            {withHeader && (
-               <Typography preset="optionsgridtitle">price</Typography>
-            )}
+            {withHeader && <Typography preset="priceroboto">price</Typography>}
 
-            <Typography preset={small ? 'currencyoverlay' : 'optionsgridtitle'}>
+            <Typography preset={small ? 'currencyoverlay' : 'pricecart'}>
                {currency.currency.symbol} {currency.amount}
             </Typography>
          </li>

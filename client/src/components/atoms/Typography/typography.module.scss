@@ -79,6 +79,21 @@
       text-transform: uppercase;
    }
 
+   &.priceroboto {
+      font-family: "Roboto Condensed";
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 18px;
+      text-transform: uppercase;
+   }
+
+   &.pricecart {
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 24px;
+      text-transform: uppercase;
+   }
+
    &.amountplug {
       font-weight: 700;
       font-size: 24px;
@@ -109,6 +124,17 @@
       font-weight: 400;
       font-size: 11px;
       line-height: 120%;
+   }
+   &.cardheader {
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 40px;
+      text-transform: uppercase;
+   }
+   &.cartdigit {
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 160%;
    }
 
    &.left {

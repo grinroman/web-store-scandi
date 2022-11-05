@@ -21,7 +21,10 @@ type TypographyProps = {
       | 'calculator'
       | 'overlayproduct'
       | 'currencyoverlay'
-      | 'categoryoverlay';
+      | 'categoryoverlay'
+      | 'cartdigit'
+      | 'priceroboto'
+      | 'pricecart';
    color?: Color;
    style?: CSSProperties;
    align?: 'left' | 'center' | 'right';

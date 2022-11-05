@@ -4,10 +4,12 @@ import styles from './paramgrid.module.scss';
 import clsx from 'clsx';
 export default class ParamGrid extends PureComponent {
    componentDidMount() {
-      this.props.setSelectedParamArray(
-         this.props.attributeIndex,
-         this.props.sizegrid.items[0].value
-      );
+      if (!this.props.haveExistingParamArray) {
+         this.props.setSelectedParamArray(
+            this.props.attributeIndex,
+            this.props.sizegrid.items[0].value
+         );
+      }
    }
 
    render() {
@@ -16,17 +18,25 @@ export default class ParamGrid extends PureComponent {
          selectedParamArray,
          setSelectedParamArray,
          attributeIndex,
+         haveExistingParamArray,
       } = this.props;
+
       return (
-         <li className={styles.root}>
-            <Typography preset="overlaytitle">{sizegrid.id}</Typography>
+         <li
+            className={clsx(
+               styles.root,
+               haveExistingParamArray && styles['cart']
+            )}
+         >
+            <Typography preset="optionsgridtitle">{sizegrid.id}:</Typography>
             <ul className={styles.root__sizes_wrapper}>
                {sizegrid.items.map((el) => (
                   <li
                      key={el.id}
-                     onClick={() =>
-                        setSelectedParamArray(attributeIndex, el.value)
-                     }
+                     {...(!haveExistingParamArray && {
+                        onClick: () =>
+                           setSelectedParamArray(attributeIndex, el.value),
+                     })}
                   >
                      <Typography
                         preset="headertextblank"
