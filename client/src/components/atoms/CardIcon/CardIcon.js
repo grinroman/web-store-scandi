@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
-import styles from './cardicon.module.scss';
+import Typography from '../Typography/Typography';
+import { connect } from 'react-redux';
 import clsx from 'clsx';
+import styles from './cardicon.module.scss';
 
-export default class CardIcon extends Component {
+class CardIcon extends Component {
    state = {
       isActive: true,
    };
 
    render() {
-      const { isForCard, setModalIsActive } = this.props;
+      const { isForCard, setModalIsActive, cardTotal } = this.props;
       return (
-         <button className={styles.root}>
-            <div
+         <div className={styles.root}>
+            <button
                className={clsx(styles.root__card, isForCard && styles.addcard)}
                onClick={setModalIsActive}
             >
@@ -35,8 +37,21 @@ export default class CardIcon extends Component {
                      fill="#43464E"
                   />
                </svg>
-            </div>
-         </button>
+               <Typography
+                  preset="textdarkmode"
+                  component="div"
+                  className={styles.root__cardamount}
+               >
+                  {cardTotal}
+               </Typography>
+            </button>
+         </div>
       );
    }
 }
+
+const mapStateToProps = (state) => ({
+   cardTotal: state.cardTotal,
+});
+
+export default connect(mapStateToProps)(CardIcon);

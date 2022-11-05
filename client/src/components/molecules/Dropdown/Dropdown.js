@@ -4,10 +4,8 @@ import styles from './dropdown.module.scss';
 import clsx from 'clsx';
 import { connect } from 'react-redux';
 import { currencyChange } from '../../../actions';
-import bindActionCreators from 'redux';
 
 class Dropdown extends React.PureComponent {
-   //TODO: оптимизация если валюта не меняется при нажатии на кнопку текущей валбты - PureComponent
    constructor(props) {
       super(props);
       this.state = {
@@ -17,7 +15,7 @@ class Dropdown extends React.PureComponent {
 
    setIsActive = () => {
       this.setState((state) => ({
-         isActive: !state.isActive, //TODO: закрывать список при нажатии вне его
+         isActive: !state.isActive,
       }));
    };
 

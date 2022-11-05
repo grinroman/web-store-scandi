@@ -8,16 +8,6 @@ import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
 import { SnackbarProvider } from 'notistack';
 import './scss/index.scss';
 
-// const cache = new InMemoryCache({
-//    typePolicies: {
-//       Product: {
-//          // In an inventory management system, products might be identified
-//          // by their UPC.
-//          keyFields: ['id'],
-//       },
-//    },
-// });
-
 const defaultOptions = {
    watchQuery: {
       fetchPolicy: 'no-cache',
@@ -47,7 +37,7 @@ root.render(
          <ApolloProvider client={client}>
             <SnackbarProvider
                anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-               autoHideDuration={1000}
+               autoHideDuration={2000}
             >
                <App />
             </SnackbarProvider>

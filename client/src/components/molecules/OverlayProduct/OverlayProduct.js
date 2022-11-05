@@ -54,8 +54,6 @@ class OverlayProduct extends Component {
       const { productInfo, data } = this.props;
       const { loading, product } = data;
 
-      //TODO: заменить на svg
-
       return (
          <>
             {loading ? (
@@ -122,5 +120,4 @@ class OverlayProduct extends Component {
 
 export default graphql(getSingleProduct, {
    options: (props) => ({ variables: { id: props.productInfo.id } }),
-   // refetchQueries: [{ query: getSingleProduct }], //TODO: обновлять кэш!!!
 })(OverlayProduct);

@@ -2,11 +2,29 @@
 
 .root {
    &__card {
-      padding: 3px 6px 2px 4px;
+      padding: 3px 6px 0px 4px;
       position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50px;
+      height: 40px;
       &:hover {
          background-color: get-color(hovered, base);
          border-radius: 5px;
       }
+   }
+   &__cardamount {
+      position: relative;
+      width: 21px;
+      height: 21px;
+
+      border-radius: 50%;
+      bottom: 8px;
+      left: -5px;
+      background-color: get-color(paragraph, base);
+      display: flex;
+      align-items: center;
+      justify-content: center;
    }
 }

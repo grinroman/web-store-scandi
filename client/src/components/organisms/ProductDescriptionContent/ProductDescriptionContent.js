@@ -178,7 +178,6 @@ let updatedComponent = connect(
 )(
    graphql(getSingleProduct, {
       options: (props) => ({ variables: { id: props.productId } }),
-      // refetchQueries: [{ query: getSingleProduct }], //TODO: обновлять кэш!!!
    })(ProductDescriptionContent)
 );
 

@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
-
+import Container from '../templates/Container/Container';
+import ErrorPageComponent from '../organisms/ErrorPageComponent/ErrorPageComponent';
 export default class ErrorPage extends Component {
    render() {
-      return <div>ErrorPage</div>; //TODO: создать такую страницу
+      return (
+         <Container>
+            <ErrorPageComponent />
+         </Container>
+      );
    }
 }
