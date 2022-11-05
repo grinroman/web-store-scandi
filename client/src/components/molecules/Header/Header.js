@@ -61,6 +61,7 @@ class Header extends Component {
                </ul>
             )}
             <Logo />
+
             <div className={styles.root__options}>
                {loading ? (
                   <SmallSpinner />

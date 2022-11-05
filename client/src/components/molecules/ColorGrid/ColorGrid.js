@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styles from './colorgrid.module.scss';
 import clsx from 'clsx';
+
 import Typography from '../../atoms/Typography/Typography';
 
 class ColorGrid extends Component {

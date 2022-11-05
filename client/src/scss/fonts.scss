@@ -61,13 +61,13 @@ $am-font-family: "Raleway";
 }
 
 @font-face {
-   font-family: "Roboto", sans-serif;
+   font-family: "Roboto";
    src: url("../../public/fonts/Roboto-Regular.woff") format("woff"),
       url("../../public/fonts/Roboto-Regular.eot") format("eot"),
       url("../../public/fonts/Roboto-Regular.ttf") format("ttf");
    font-style: normal;
    font-weight: 400;
-   font-display: swap; //TODO: подключить остальные шрифты
+   font-display: swap;
 }
 
 @font-face {
@@ -80,5 +80,4 @@ $am-font-family: "Raleway";
    font-display: swap;
 }
 
-//Roboto-Regular.ttf
 //fonts: black, extrabold, bold, medium, regular

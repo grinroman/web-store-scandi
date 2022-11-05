@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import styles from './cardproduct.module.scss';
 import AddCardIcon from '../../atoms/AddCardIcon/AddCardIcon';
 import { Link } from 'react-router-dom';
-import { Navigate } from 'react-router-dom';
 import { withSnackbar } from 'notistack';
 import { addProductToCard } from '../../../actions';
 
@@ -18,7 +17,6 @@ class CardProduct extends Component {
       ) {
          e.preventDefault();
          const { product } = this.props;
-         // console.log(product.attributes);
          let defaultSelectedParamArray = product.attributes.reduce(
             (acc, el) => {
                if (el.id !== 'Color') {
@@ -55,22 +53,20 @@ class CardProduct extends Component {
 
    render() {
       const { product, currentCurrency } = this.props;
-      const { redirectToProductPage } = this.state;
 
       const amount = product.prices.filter(
          (el) => el.currency.symbol === currentCurrency
       )[0].amount;
 
       return (
-         <Link to={`/product/${product.id}`}>
+         <Link to={product.inStock && `/product/${product.id}`}>
             <li className={styles.root}>
-               {redirectToProductPage && (
-                  <Navigate to={`/product/${product.id}`} replace={false} />
-               )}
                <button
                   disabled={!product.inStock}
                   className={styles.root__button}
-                  onClick={(e) => this.cardClick(e, product.id)}
+                  {...(product.inStock && {
+                     onClick: (e) => this.cardClick(e, product.id),
+                  })}
                >
                   <img
                      src={product.gallery[0]}
