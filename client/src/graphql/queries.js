@@ -23,6 +23,13 @@ const getListProducts = gql`
             inStock
             gallery
             category
+            attributes {
+               id
+               items {
+                  value
+                  id
+               }
+            }
             prices {
                amount
                currency {

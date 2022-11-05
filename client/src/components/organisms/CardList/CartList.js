@@ -3,6 +3,7 @@ import Typography from '../../atoms/Typography/Typography';
 import CartItem from '../../molecules/CartItem/CartItem';
 import { connect } from 'react-redux';
 import { addProductToCard, deleteProductFromCard } from '../../../actions';
+import { calculateWithTaxes } from '../../../calculations/calculateWithTaxes';
 import styles from './cartlist.module.scss';
 class CardList extends Component {
    render() {
@@ -27,10 +28,50 @@ class CardList extends Component {
             </Typography>
             <ul className={styles.root__items_wrapepr}>
                {cardArray.map((el) => (
-                  <CartItem reduxData={el} key={el.id} />
+                  <CartItem
+                     reduxData={el}
+                     key={el.id}
+                     addProductToCard={addProductToCard}
+                     deleteProductFromCard={deleteProductFromCard}
+                  />
                ))}
             </ul>
-            <div className={styles.root__total}></div>
+            <div className={styles.root__total}>
+               <div className={styles.root__total__grid}>
+                  <Typography component="div" preset="totalcart">
+                     Tax 21%:
+                  </Typography>
+                  <Typography component="div" preset="pricecart">
+                     {currentCurrency}
+                     {calculateWithTaxes(cardTotalInCurrency).toFixed(2)}
+                  </Typography>
+                  <Typography component="div" preset="totalcart">
+                     Quantity:
+                  </Typography>
+                  <Typography component="div" preset="pricecart">
+                     {cardTotal}
+                  </Typography>
+                  <Typography component="div" preset="totalcart">
+                     Total:
+                  </Typography>
+                  <Typography component="div" preset="pricecart">
+                     {currentCurrency}
+                     {cardTotalInCurrency.toFixed(2)}
+                  </Typography>
+               </div>
+            </div>
+            <button
+               className={styles.root__addtocard}
+               onClick={this.orderHandler}
+            >
+               <Typography
+                  preset="headertextselected"
+                  color="textdarkmode"
+                  align="center"
+               >
+                  order
+               </Typography>
+            </button>
          </div>
       );
    }

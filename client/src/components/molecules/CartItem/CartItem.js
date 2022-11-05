@@ -15,13 +15,66 @@ import ColorGrid from '../ColorGrid/ColorGrid';
 class CartItem extends Component {
    state = { currentImageIndex: 0 };
 
-   changeSlideHandler = (arrLength) => {};
+   changeSlideHandler = (arrLength, add) => {
+      const { currentImageIndex } = this.state;
+      if (currentImageIndex + add === arrLength) {
+         this.setState({ currentImageIndex: 0 });
+      }
+      if (currentImageIndex + add === -1) {
+         this.setState({ currentImageIndex: arrLength - 1 });
+      } else {
+         this.setState((state) => ({
+            currentImageIndex: state.currentImageIndex + add,
+         }));
+      }
+   };
+
+   orderHandler = () => {
+      console.log('order action!');
+   };
+
+   incrementAmount = () => {
+      this.setState((state) => ({
+         amount: state.amount + 1,
+      }));
+      const { data, reduxData } = this.props;
+      this.props.addProductToCard(
+         data.product.id,
+         reduxData.paramgrid,
+         reduxData.color,
+         this.state.amount,
+         data.product.prices
+      );
+   };
+
+   decrementAmount = () => {
+      const { data, reduxData } = this.props;
+
+      if (this.state.amount === 1) {
+         this.props.deleteProductFromCard(
+            data.product.id,
+            reduxData.paramgrid,
+            reduxData.color,
+            data.product.prices
+         );
+      } else {
+         this.setState((state) => ({
+            amount: state.amount - 1,
+         }));
+
+         this.props.deleteProductFromCard(
+            data.product.id,
+            reduxData.paramgrid,
+            reduxData.color,
+            data.product.prices
+         );
+      }
+   };
 
    render() {
       const { currentImageIndex } = this.state;
       const { reduxData, data } = this.props;
       const { loading, product } = data;
-      console.log(reduxData.pricesArray);
       return (
          <>
             {loading ? (
@@ -61,27 +114,51 @@ class CartItem extends Component {
                   </ul>
                   <div className={styles.root__image_carousel}>
                      <div className={styles.root__calculator}>
-                        <button className={styles.root__calculator__operation}>
+                        <button
+                           className={styles.root__calculator__operation}
+                           onClick={this.incrementAmount}
+                        >
                            <PlusIcon scale={true} />
                         </button>
-                        <Typography preset="cartdigit">1</Typography>
-                        <button className={styles.root__calculator__operation}>
+                        <Typography preset="cartdigit">
+                           {reduxData.amount}
+                        </Typography>
+                        <button
+                           className={styles.root__calculator__operation}
+                           onClick={this.decrementAmount}
+                        >
                            <MinusIcon scale={true} />
                         </button>
                      </div>
                      <div className={styles.root__slider}>
                         <img
-                           src="https://images.canadagoose.com/image/upload/w_480,c_scale,f_auto,q_auto:best/v1576016105/product-image/2409L_61.jpg"
-                           alt="kek))"
+                           src={product.gallery[currentImageIndex]}
+                           alt={product.id + +currentImageIndex}
                         />
-                        <div className={styles.root__slider__wrapper}>
-                           <button>
-                              <SliderArrow />
-                           </button>
-                           <button>
-                              <SliderArrow revert={true} />
-                           </button>
-                        </div>
+                        {product.gallery.length > 1 && (
+                           <div className={styles.root__slider__wrapper}>
+                              <button
+                                 onClick={() =>
+                                    this.changeSlideHandler(
+                                       product.gallery.length,
+                                       1
+                                    )
+                                 }
+                              >
+                                 <SliderArrow />
+                              </button>
+                              <button
+                                 onClick={() =>
+                                    this.changeSlideHandler(
+                                       product.gallery.length,
+                                       -1
+                                    )
+                                 }
+                              >
+                                 <SliderArrow revert={true} />
+                              </button>
+                           </div>
+                        )}
                      </div>
                   </div>
                </li>

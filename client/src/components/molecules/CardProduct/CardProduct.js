@@ -5,7 +5,8 @@ import styles from './cardproduct.module.scss';
 import AddCardIcon from '../../atoms/AddCardIcon/AddCardIcon';
 import { Link } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
-import { callRedirectToPLP } from '../../../actions';
+import { withSnackbar } from 'notistack';
+import { addProductToCard } from '../../../actions';
 
 class CardProduct extends Component {
    state = { redirectToProductPage: false };
@@ -16,7 +17,39 @@ class CardProduct extends Component {
          e.target.tagName.toLowerCase() === 'svg'
       ) {
          e.preventDefault();
-         //TODO: add to card default settings product!
+         const { product } = this.props;
+         // console.log(product.attributes);
+         let defaultSelectedParamArray = product.attributes.reduce(
+            (acc, el) => {
+               if (el.id !== 'Color') {
+                  acc.push(el.items[0].value);
+               }
+               return acc;
+            },
+            []
+         );
+
+         let defaultSelectedColor;
+         if (product.attributes.findIndex((el) => el.id === 'Color') !== -1) {
+            defaultSelectedColor = product.attributes.filter(
+               (el) => el.id === 'Color'
+            )[0].items[0].id;
+         }
+
+         this.props.addProductToCard(
+            product.id,
+            defaultSelectedParamArray,
+            defaultSelectedColor,
+            1,
+            product.prices
+         );
+         this.props.enqueueSnackbar(
+            'Product was successfully added to the card with default parameters!',
+            {
+               variant: 'success',
+               vertical: 'top',
+            }
+         );
       }
    };
 
@@ -81,4 +114,27 @@ const mapStateToProps = (state) => {
    };
 };
 
-export default connect(mapStateToProps)(CardProduct);
+const mapDispatchToProps = (dispatch) => {
+   return {
+      addProductToCard: (
+         productId,
+         selectedParamArray,
+         selectedColorName,
+         amount,
+         pricesArray
+      ) =>
+         dispatch(
+            addProductToCard({
+               id: productId,
+               paramgrid: selectedParamArray,
+               color: selectedColorName,
+               amount: amount,
+               pricesArray,
+            })
+         ),
+   };
+};
+
+export default withSnackbar(
+   connect(mapStateToProps, mapDispatchToProps)(CardProduct)
+);

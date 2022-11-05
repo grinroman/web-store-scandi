@@ -16,11 +16,34 @@
    &__total {
       width: 100%;
       height: 200px;
-      border: 1px solid black;
       border-top: 2px solid get-color(hovered, base);
+      padding-top: 32px;
 
-      &__orderinfo {
+      &__grid {
          display: grid;
+         width: 300px;
+         grid-template-columns: 0.45fr 1fr;
+         grid-gap: 0px 5px;
+
+         & div {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+         }
+      }
+   }
+
+   &__addtocard {
+      width: 292px;
+      height: 52px;
+      background-color: get-color(salad, base);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 40px;
+
+      &:hover {
+         opacity: 0.9;
       }
    }
 }

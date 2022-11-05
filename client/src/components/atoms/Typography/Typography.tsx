@@ -24,7 +24,8 @@ type TypographyProps = {
       | 'categoryoverlay'
       | 'cartdigit'
       | 'priceroboto'
-      | 'pricecart';
+      | 'pricecart'
+      | 'totalcart';
    color?: Color;
    style?: CSSProperties;
    align?: 'left' | 'center' | 'right';
