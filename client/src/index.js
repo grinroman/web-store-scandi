@@ -25,10 +25,7 @@ const client = new ApolloClient({
    defaultOptions,
 });
 
-const store = createStore(
-   reducer,
-   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+const store = createStore(reducer);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

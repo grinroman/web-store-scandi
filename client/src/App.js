@@ -35,7 +35,7 @@ class App extends React.Component {
          <Router>
             <Header
                selectedCategory={selectedCategory}
-               // setSelectedCategory={this.setSelectedCategory}
+               setSelectedCategory={this.setSelectedCategory}
                setModalIsActive={this.setModalIsActive}
             />
             {modalIsActive && (
@@ -56,7 +56,7 @@ class App extends React.Component {
                   }
                />
                <Route
-                  path="/tech" //FIXME: проходится мапом а не хардкодить
+                  path="/tech"
                   element={
                      <ProductListingPage
                         selectedCategory={selectedCategory}
@@ -65,7 +65,7 @@ class App extends React.Component {
                   }
                />
                <Route
-                  path="/clothes" //FIXME: проходится мапом а не хардкодить
+                  path="/clothes"
                   element={
                      <ProductListingPage
                         selectedCategory={selectedCategory}

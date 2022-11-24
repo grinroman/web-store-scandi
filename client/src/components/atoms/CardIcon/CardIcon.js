@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import Typography from '../Typography/Typography';
 import { connect } from 'react-redux';
 import clsx from 'clsx';

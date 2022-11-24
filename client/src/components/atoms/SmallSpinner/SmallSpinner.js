@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import styles from './smallspinner.module.scss';
 export default class SmallSpinner extends Component {
    render() {

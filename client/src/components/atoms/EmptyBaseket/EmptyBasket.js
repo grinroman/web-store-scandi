@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import Typography from '../Typography/Typography';
 import styles from './emptybasket.module.scss';
 export default class EmptyBasket extends Component {

@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import MinusIcon from '../../atoms/MinusIcon/MinusIcon';
 import PlusIcon from '../../atoms/PlusIcon/PlusIcon';
 import SliderArrow from '../../atoms/SliderArrow/SliderArrow';
 import { getSingleProduct } from '../../../graphql/queries';
 import Typography from '../../atoms/Typography/Typography';
 import { graphql } from '@apollo/client/react/hoc';
-
 import styles from './cartitem.module.scss';
 import SmallSpinner from '../../atoms/SmallSpinner/SmallSpinner';
 import ProductTitle from '../ProductTitle/ProductTitle';

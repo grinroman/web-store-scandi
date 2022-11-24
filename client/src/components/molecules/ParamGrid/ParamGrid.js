@@ -1,4 +1,4 @@
-import React, { Component, PureComponent } from 'react';
+import { PureComponent } from 'react';
 import Typography from '../../atoms/Typography/Typography';
 import styles from './paramgrid.module.scss';
 import clsx from 'clsx';

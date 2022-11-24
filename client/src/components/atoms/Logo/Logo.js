@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './logo.module.scss';
 export default class Logo extends Component {
    render() {
       return (
          <div className={styles.root}>
-            <Link to="/">
+            <Link to="/all">
                <svg
                   width="41"
                   height="41"

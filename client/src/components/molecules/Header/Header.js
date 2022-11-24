@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import Typography from '../../atoms/Typography/Typography';
 import styles from './header.module.scss';
 import { graphql } from '@apollo/client/react/hoc';
@@ -20,11 +20,7 @@ class Header extends Component {
    render() {
       const { data, setModalIsActive, selectedCategory } = this.props;
 
-     
-
       const { loading, categories, currencies } = data;
-
-      console.log('new render!!!');
 
       return (
          <header className={styles.root}>

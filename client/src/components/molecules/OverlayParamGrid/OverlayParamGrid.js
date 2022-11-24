@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import Typography from '../../atoms/Typography/Typography';
 import clsx from 'clsx';
 import styles from './overlayparamgrid.module.scss';

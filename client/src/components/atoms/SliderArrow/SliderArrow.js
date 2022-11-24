@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import clsx from 'clsx';
 import styles from './sliderarrow.module.scss';
 class SliderArrow extends Component {

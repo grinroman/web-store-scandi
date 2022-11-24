@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import { graphql } from '@apollo/client/react/hoc';
 import Typography from '../../atoms/Typography/Typography';
 import { getSingleProduct } from '../../../graphql/queries';

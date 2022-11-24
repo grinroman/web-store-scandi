@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import { connect } from 'react-redux';
 import EmptyBasket from '../../atoms/EmptyBaseket/EmptyBasket';
 import Typography from '../../atoms/Typography/Typography';

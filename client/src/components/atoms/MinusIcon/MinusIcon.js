@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import styles from './minusicon.module.scss';
 class MinusIcon extends Component {
    render() {

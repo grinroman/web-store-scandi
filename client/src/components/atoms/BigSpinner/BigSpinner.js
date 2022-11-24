@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import styles from './bigspinner.module.scss';
 export default class BigSpinner extends Component {
    render() {
