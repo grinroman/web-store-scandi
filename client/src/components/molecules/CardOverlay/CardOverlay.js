@@ -6,6 +6,7 @@ import { addProductToCard, deleteProductFromCard } from '../../../actions';
 import { Link } from 'react-router-dom';
 import OverlayProduct from '../OverlayProduct/OverlayProduct';
 import styles from './cardoverlay.module.scss';
+import { wordForm } from '../../../calculations/wordForm';
 import OverlayButton from '../../atoms/OverlayButton/OverlayButton';
 class CardOverlay extends Component {
    state = { redirectToCard: false };
@@ -44,7 +45,7 @@ class CardOverlay extends Component {
                               My Bag,&nbsp;
                            </Typography>
                            <Typography preset="currency">
-                              {cardTotal} items
+                              {cardTotal} {wordForm('item', cardTotal)}
                            </Typography>
                         </div>
                         <ul className={styles.root__products_wrapper}>

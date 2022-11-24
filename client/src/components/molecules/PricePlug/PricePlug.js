@@ -16,7 +16,7 @@ class PricePlug extends Component {
             {withHeader && <Typography preset="priceroboto">price</Typography>}
 
             <Typography preset={small ? 'currencyoverlay' : 'pricecart'}>
-               {currency.currency.symbol} {currency.amount}
+               {currency.currency.symbol} {currency.amount.toFixed(2)}
             </Typography>
          </li>
       );

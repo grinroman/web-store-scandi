@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { graphql } from '@apollo/client/react/hoc';
 import { getSingleProduct } from '../../../graphql/queries';
 import { addProductToCard } from '../../../actions';
@@ -11,6 +11,7 @@ import ProductTitle from '../../molecules/ProductTitle/ProductTitle';
 import ParamGrid from '../../molecules/ParamGrid/ParamGrid';
 import ColorGrid from '../../molecules/ColorGrid/ColorGrid';
 import PricePlug from '../../molecules/PricePlug/PricePlug';
+import clsx from 'clsx';
 import ProductDescription from '../../atoms/ProductDescription/ProductDescription';
 
 class ProductDescriptionContent extends React.PureComponent {
@@ -128,7 +129,11 @@ class ProductDescriptionContent extends React.PureComponent {
                         <PricePlug prices={product.prices} withHeader={true} />
                      </ul>
                      <button
-                        className={styles.root__addtocard}
+                        disabled={!product.inStock}
+                        className={clsx(
+                           styles.root__addtocard,
+                           !product.inStock && styles.inactive
+                        )}
                         onClick={() => {
                            this.addNewProductToCard(product.id);
                         }}
@@ -138,7 +143,7 @@ class ProductDescriptionContent extends React.PureComponent {
                            color="textdarkmode"
                            align="center"
                         >
-                           add to card
+                           {product.inStock ? 'add to card' : 'out of stock'}
                         </Typography>
                      </button>
                      <ProductDescription

@@ -47,6 +47,7 @@ const getSingleProduct = gql`
       product(id: $id) {
          id
          name
+         inStock
          gallery
          description
          category

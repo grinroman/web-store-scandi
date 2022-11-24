@@ -37,13 +37,15 @@ class CardIcon extends Component {
                      fill="#43464E"
                   />
                </svg>
-               <Typography
-                  preset="textdarkmode"
-                  component="div"
-                  className={styles.root__cardamount}
-               >
-                  {cardTotal}
-               </Typography>
+               {!!cardTotal && (
+                  <Typography
+                     preset="textdarkmode"
+                     component="div"
+                     className={styles.root__cardamount}
+                  >
+                     {cardTotal}
+                  </Typography>
+               )}
             </button>
          </div>
       );

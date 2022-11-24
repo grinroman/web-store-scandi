@@ -7,7 +7,7 @@
    height: calc(100vh - 160px);
 
    &__image_wrapper {
-      width: 60%;
+      width: 57%;
       display: flex;
       justify-content: space-between;
 
@@ -51,4 +51,7 @@
          opacity: 0.9;
       }
    }
+}
+.inactive {
+   background-color: get-color(grei, base);
 }

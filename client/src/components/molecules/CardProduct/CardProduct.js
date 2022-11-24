@@ -59,7 +59,7 @@ class CardProduct extends Component {
       )[0].amount;
 
       return (
-         <Link to={product.inStock && `/product/${product.id}`}>
+         <Link to={`/product/${product.id}`}>
             <li className={styles.root}>
                <button
                   disabled={!product.inStock}
@@ -94,7 +94,7 @@ class CardProduct extends Component {
                   </Typography>
                   <Typography preset="currency" align="left">
                      {currentCurrency}
-                     {amount}
+                     {amount.toFixed(2)}
                   </Typography>
                </button>
             </li>
