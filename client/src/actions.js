@@ -17,3 +17,7 @@ export const addProductToCard = (productInfo) => {
 export const deleteProductFromCard = (productInfo) => {
    return { type: 'DELETE_PRODUCT_FROM_CARD', payload: productInfo };
 };
+
+export const changeProductCategory = (currentCategory) => {
+   return { type: 'CHANGE_PRODUCT_CATEGORY', payload: currentCategory };
+};

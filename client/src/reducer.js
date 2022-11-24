@@ -13,10 +13,16 @@ const initialState = {
    cardTotalInCurrency: Cookies.get('cardTotalInCurrency')
       ? JSON.parse(Cookies.get('cardTotalInCurrency'))
       : 0,
+   currentCategory: Cookies.get('currentCategory')
+      ? JSON.parse(Cookies.get('currentCategory'))
+      : 'all',
 };
 
 const reducer = (state = initialState, action) => {
    switch (action.type) {
+      case 'CHANGE_PRODUCT_CATEGORY': {
+         return { ...state, currentCategory: action.payload };
+      }
       case 'CURRENCY_CHANGE': {
          const currentCurrency = action.payload;
          const newCardTotalInCurrency = state.cardArray.reduce((sum, el) => {

@@ -4,7 +4,12 @@ import ErrorPage from './components/pages/ErrorPage';
 import CartPage from './components/pages/CartPage';
 import ProductListingPage from './components/pages/ProductListingPage';
 import ProductDescriptionPage from './components/pages/ProductDescriptionPage';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {
+   BrowserRouter as Router,
+   Routes,
+   Route,
+   Navigate,
+} from 'react-router-dom';
 import CardOverlay from './components/molecules/CardOverlay/CardOverlay';
 
 class App extends React.Component {
@@ -16,7 +21,7 @@ class App extends React.Component {
 
    setSelectedCategory = (name) => {
       this.setState({ selectedCategory: name });
-   };
+   }; //FIXME: загнать в redux
 
    setModalIsActive = () => {
       this.setState((state) => ({
@@ -30,7 +35,7 @@ class App extends React.Component {
          <Router>
             <Header
                selectedCategory={selectedCategory}
-               setSelectedCategory={this.setSelectedCategory}
+               // setSelectedCategory={this.setSelectedCategory}
                setModalIsActive={this.setModalIsActive}
             />
             {modalIsActive && (
@@ -40,8 +45,27 @@ class App extends React.Component {
                />
             )}
             <Routes>
+               <Route path="*" element={<Navigate to="/all" replace />} />
                <Route
-                  path="/"
+                  path="/all"
+                  element={
+                     <ProductListingPage
+                        selectedCategory={selectedCategory}
+                        redirectToCard={redirectToCard}
+                     />
+                  }
+               />
+               <Route
+                  path="/tech" //FIXME: проходится мапом а не хардкодить
+                  element={
+                     <ProductListingPage
+                        selectedCategory={selectedCategory}
+                        redirectToCard={redirectToCard}
+                     />
+                  }
+               />
+               <Route
+                  path="/clothes" //FIXME: проходится мапом а не хардкодить
                   element={
                      <ProductListingPage
                         selectedCategory={selectedCategory}

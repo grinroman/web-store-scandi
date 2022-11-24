@@ -15,7 +15,7 @@ class CardOverlay extends Component {
       this.props.setModalIsActive();
    };
    checkout = () => {
-      // console.log('logic of purchasing!');
+      console.log('logic of purchasing!');
    };
 
    render() {

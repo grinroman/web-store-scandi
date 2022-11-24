@@ -1,4 +1,3 @@
-// import { url } from 'inspector';
 import React from 'react';
 import Container from '../templates/Container/Container';
 import ProductDescriptionContent from '../organisms/ProductDescriptionContent/ProductDescriptionContent';

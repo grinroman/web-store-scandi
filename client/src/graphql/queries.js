@@ -1,5 +1,4 @@
 import { gql } from '@apollo/client';
-import { graphql } from '@apollo/client/react/hoc';
 
 const getCategoriesTitles = gql`
    {
@@ -9,6 +8,35 @@ const getCategoriesTitles = gql`
       }
       categories {
          name
+      }
+   }
+`;
+
+const getSingleCategory = gql`
+   query ($category: CategoryInput) {
+      category(input: $category) {
+         name
+         products {
+            id
+            name
+            inStock
+            gallery
+            category
+            attributes {
+               id
+               items {
+                  value
+                  id
+               }
+            }
+            prices {
+               amount
+               currency {
+                  symbol
+               }
+            }
+            brand
+         }
       }
    }
 `;
@@ -72,4 +100,9 @@ const getSingleProduct = gql`
    }
 `;
 
-export { getCategoriesTitles, getListProducts, getSingleProduct };
+export {
+   getCategoriesTitles,
+   getListProducts,
+   getSingleProduct,
+   getSingleCategory,
+};

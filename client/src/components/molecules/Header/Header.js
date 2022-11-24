@@ -8,17 +8,24 @@ import clsx from 'clsx';
 import Dropdown from '../Dropdown/Dropdown';
 import SmallSpinner from '../../atoms/SmallSpinner/SmallSpinner';
 import { getCategoriesTitles } from '../../../graphql/queries.js';
+import { changeProductCategory } from '../../../actions';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 class Header extends Component {
    changeCategoryAndRedirect = (elName) => {
-      this.props.setSelectedCategory(elName);
+      this.props.changeProductCategory(elName);
    };
 
    render() {
-      const { data, selectedCategory, setModalIsActive } = this.props;
+      const { data, setModalIsActive, selectedCategory } = this.props;
+
+     
 
       const { loading, categories, currencies } = data;
+
+      console.log('new render!!!');
+
       return (
          <header className={styles.root}>
             {loading ? (
@@ -37,7 +44,7 @@ class Header extends Component {
                               this.changeCategoryAndRedirect(el.name)
                            }
                         >
-                           <Link to="/">
+                           <Link to={`/${el.name}`}>
                               <Typography
                                  component="button"
                                  preset={
@@ -73,5 +80,17 @@ class Header extends Component {
       );
    }
 }
+const mapStateToProps = (state) => {
+   return { selectedCategory: state.currentCategory };
+};
+const mapDispatchToProps = (dispatch) => {
+   return {
+      changeProductCategory: (symbol) =>
+         dispatch(changeProductCategory(symbol)),
+   };
+};
 
-export default graphql(getCategoriesTitles)(Header);
+export default connect(
+   mapStateToProps,
+   mapDispatchToProps
+)(graphql(getCategoriesTitles)(Header));
