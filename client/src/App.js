@@ -19,10 +19,6 @@ class App extends React.Component {
       redirectToCard: false,
    };
 
-   setSelectedCategory = (name) => {
-      this.setState({ selectedCategory: name });
-   }; //FIXME: загнать в redux
-
    setModalIsActive = () => {
       this.setState((state) => ({
          modalIsActive: !state.modalIsActive,
