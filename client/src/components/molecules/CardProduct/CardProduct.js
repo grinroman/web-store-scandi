@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import styles from './cardproduct.module.scss';
 import AddCardIcon from '../../atoms/AddCardIcon/AddCardIcon';
 import { Link } from 'react-router-dom';
-import { withSnackbar } from 'notistack';
 import { addProductToCard } from '../../../actions';
 
 class CardProduct extends Component {
@@ -40,13 +39,6 @@ class CardProduct extends Component {
             defaultSelectedColor,
             1,
             product.prices
-         );
-         this.props.enqueueSnackbar(
-            'Product was successfully added to the card with default parameters!',
-            {
-               variant: 'success',
-               vertical: 'top',
-            }
          );
       }
    };
@@ -131,6 +123,4 @@ const mapDispatchToProps = (dispatch) => {
    };
 };
 
-export default withSnackbar(
-   connect(mapStateToProps, mapDispatchToProps)(CardProduct)
-);
+export default connect(mapStateToProps, mapDispatchToProps)(CardProduct);

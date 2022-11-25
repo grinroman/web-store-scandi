@@ -4,7 +4,6 @@ import { getSingleProduct } from '../../../graphql/queries';
 import { addProductToCard } from '../../../actions';
 import { connect } from 'react-redux';
 import BigSpinner from '../../atoms/BigSpinner/BigSpinner';
-import { withSnackbar } from 'notistack';
 import styles from './productdescriptioncontent.module.scss';
 import Typography from '../../atoms/Typography/Typography';
 import ProductTitle from '../../molecules/ProductTitle/ProductTitle';
@@ -57,13 +56,7 @@ class ProductDescriptionContent extends React.PureComponent {
          selectedColorName,
          data.product.prices
       );
-      this.props.enqueueSnackbar(
-         'Product was successfully added to the card!',
-         {
-            variant: 'success',
-            vertical: 'top',
-         }
-      );
+
    };
 
    render() {
@@ -186,4 +179,4 @@ let updatedComponent = connect(
    })(ProductDescriptionContent)
 );
 
-export default withSnackbar(updatedComponent);
+export default updatedComponent;

@@ -25,7 +25,7 @@ type TypographyProps = {
       | 'cartdigit'
       | 'priceroboto'
       | 'pricecart'
-      | 'totalcart';
+      | 'totalcart'|'textdarkmode';
    color?: Color;
    style?: CSSProperties;
    align?: 'left' | 'center' | 'right';

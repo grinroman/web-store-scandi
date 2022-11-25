@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import styles from './productdescription.module.scss';
-import DOMPurify from 'dompurify';
 import Typography from '../Typography/Typography';
+import parse from 'html-react-parser';
 export default class ProductDescription extends Component {
    render() {
       const { descriptionString } = this.props;
@@ -9,11 +9,7 @@ export default class ProductDescription extends Component {
       return (
          <div className={styles.root}>
             <Typography preset="description" component="div">
-               <div
-                  dangerouslySetInnerHTML={{
-                     __html: DOMPurify.sanitize(descriptionString),
-                  }}
-               />
+               {parse(descriptionString)}
             </Typography>
          </div>
       );
